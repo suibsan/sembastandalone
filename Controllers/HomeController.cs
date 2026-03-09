@@ -12,6 +12,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [Route("")]
     public String Index()
     {
         return "index";

@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class TrialBattleStartRequest {
     [ProtoMember(1)]
-    public required int trialCharacterEventId { get; set; }
+    public int trialCharacterEventId { get; set; }
 
     [ProtoMember(2)]
-    public required int trialBattleId { get; set; }
+    public int trialBattleId { get; set; }
 
 }

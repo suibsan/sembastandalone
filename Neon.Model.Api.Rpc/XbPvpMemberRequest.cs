@@ -8,15 +8,15 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbPvpMemberRequest {
     [ProtoMember(1)]
-    public required int? characterId { get; set; }
+    public int? characterId { get; set; }
 
     [ProtoMember(2)]
-    public required int? xbCharacterId { get; set; }
+    public int? xbCharacterId { get; set; }
 
     [ProtoMember(3)]
-    public required int battingOrder { get; set; }
+    public int battingOrder { get; set; }
 
     [ProtoMember(4)]
-    public required int position { get; set; }
+    public int position { get; set; }
 
 }

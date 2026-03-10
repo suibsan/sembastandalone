@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class HappyWorkerListRequest {
     [ProtoMember(1)]
-    public required CurrentLocation currentLocation { get; set; }
+    public CurrentLocation currentLocation { get; set; }
 
 }

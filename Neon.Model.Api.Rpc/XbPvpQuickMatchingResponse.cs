@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbPvpQuickMatchingResponse {
     [ProtoMember(1)]
-    public required long? enemyUserId { get; set; }
+    public long? enemyUserId { get; set; }
 
 }

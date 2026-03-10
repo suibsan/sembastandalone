@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class TrialBattleState {
     [ProtoMember(1)]
-    public required int trialBattleId { get; set; }
+    public int trialBattleId { get; set; }
 
     [ProtoMember(2)]
-    public required DateTime? rewardReceivedAt { get; set; }
+    public DateTime? rewardReceivedAt { get; set; }
 
 }

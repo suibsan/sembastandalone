@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class CharacterRankEnhanceRequest {
     [ProtoMember(1)]
-    public required int characterId { get; set; }
+    public int characterId { get; set; }
 
 }

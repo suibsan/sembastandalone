@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class MailDeleteResponse {
     [ProtoMember(1)]
-    public required Resources changedResources { get; set; }
+    public Resources changedResources { get; set; }
 
     [ProtoMember(2)]
-    public required MailList list { get; set; }
+    public MailList list { get; set; }
 
 }

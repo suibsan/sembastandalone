@@ -8,12 +8,12 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class FractalViseClearResponse {
     [ProtoMember(1)]
-    public required FractalViseTotalScore fractalViseTotalScore { get; set; }
+    public FractalViseTotalScore fractalViseTotalScore { get; set; }
 
     [ProtoMember(4)]
-    public required FractalViseMission[] fractalViseMissions { get; set; }
+    public FractalViseMission[] fractalViseMissions { get; set; }
 
     [ProtoMember(3)]
-    public required Resources changedResources { get; set; }
+    public Resources changedResources { get; set; }
 
 }

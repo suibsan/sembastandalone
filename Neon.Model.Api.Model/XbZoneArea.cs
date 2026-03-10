@@ -8,15 +8,15 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbZoneArea {
     [ProtoMember(1)]
-    public required int index { get; set; }
+    public int index { get; set; }
 
     [ProtoMember(6)]
-    public required XbSuggest[] playerSuggests { get; set; }
+    public XbSuggest[] playerSuggests { get; set; }
 
     [ProtoMember(8)]
-    public required XbSuggest[] enemySuggests { get; set; }
+    public XbSuggest[] enemySuggests { get; set; }
 
     [ProtoMember(7)]
-    public required XbCommand[] commands { get; set; }
+    public XbCommand[] commands { get; set; }
 
 }

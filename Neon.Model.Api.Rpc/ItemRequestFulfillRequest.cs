@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ItemRequestFulfillRequest {
     [ProtoMember(1)]
-    public required long userId { get; set; }
+    public long userId { get; set; }
 
     [ProtoMember(2)]
-    public required int deliveryRequestItemId { get; set; }
+    public int deliveryRequestItemId { get; set; }
 
 }

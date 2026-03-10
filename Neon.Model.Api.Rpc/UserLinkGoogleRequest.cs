@@ -8,12 +8,12 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class UserLinkGoogleRequest {
     [ProtoMember(1)]
-    public required string idToken { get; set; }
+    public string idToken { get; set; }
 
     [ProtoMember(2)]
-    public required string code { get; set; }
+    public string code { get; set; }
 
     [ProtoMember(3)]
-    public required string codeVerifier { get; set; }
+    public string codeVerifier { get; set; }
 
 }

@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class SeasonPassTierPurchaseRequest {
     [ProtoMember(1)]
-    public required int seasonId { get; set; }
+    public int seasonId { get; set; }
 
     [ProtoMember(2)]
-    public required int purchaseCount { get; set; }
+    public int purchaseCount { get; set; }
 
 }

@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ItemOpenSelectBoxRequest {
     [ProtoMember(1)]
-    public required SelectBoxChoice[] selectBoxChoices { get; set; }
+    public SelectBoxChoice[] selectBoxChoices { get; set; }
 
 }

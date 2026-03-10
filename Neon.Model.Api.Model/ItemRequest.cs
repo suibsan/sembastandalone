@@ -8,18 +8,18 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ItemRequest {
     [ProtoMember(1)]
-    public required long userId { get; set; }
+    public long userId { get; set; }
 
     [ProtoMember(2)]
-    public required int deliveryRequestItemId { get; set; }
+    public int deliveryRequestItemId { get; set; }
 
     [ProtoMember(3)]
-    public required DateTime? publishedAt { get; set; }
+    public DateTime? publishedAt { get; set; }
 
     [ProtoMember(4)]
-    public required DateTime? fulfilledAt { get; set; }
+    public DateTime? fulfilledAt { get; set; }
 
     [ProtoMember(5)]
-    public required bool isNew { get; set; }
+    public bool isNew { get; set; }
 
 }

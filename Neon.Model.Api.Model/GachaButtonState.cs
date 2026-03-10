@@ -8,15 +8,15 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class GachaButtonState {
     [ProtoMember(1)]
-    public required int gachaId { get; set; }
+    public int gachaId { get; set; }
 
     [ProtoMember(2)]
-    public required int gachaButtonId { get; set; }
+    public int gachaButtonId { get; set; }
 
     [ProtoMember(3)]
-    public required int executionCount { get; set; }
+    public int executionCount { get; set; }
 
     [ProtoMember(4)]
-    public required DateTime? lastExecutedAt { get; set; }
+    public DateTime? lastExecutedAt { get; set; }
 
 }

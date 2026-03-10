@@ -8,12 +8,12 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class GearCompressResponse {
     [ProtoMember(1)]
-    public required Resources changedResources { get; set; }
+    public Resources changedResources { get; set; }
 
     [ProtoMember(2)]
-    public required ResourceEntities deletedResources { get; set; }
+    public ResourceEntities deletedResources { get; set; }
 
     [ProtoMember(3)]
-    public required Rewards[] rewards { get; set; }
+    public Rewards[] rewards { get; set; }
 
 }

@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ProfileBadge {
     [ProtoMember(1)]
-    public required int profileBadgeId { get; set; }
+    public int profileBadgeId { get; set; }
 
     [ProtoMember(2)]
-    public required DateTime? receivedAt { get; set; }
+    public DateTime? receivedAt { get; set; }
 
 }

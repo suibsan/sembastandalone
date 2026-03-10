@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class FollowAddResponse {
     [ProtoMember(1)]
-    public required DateTime? followedAt { get; set; }
+    public DateTime? followedAt { get; set; }
 
     [ProtoMember(2)]
-    public required Resources changedResources { get; set; }
+    public Resources changedResources { get; set; }
 
 }

@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ProfileUpdateNameRequest {
     [ProtoMember(1)]
-    public required string name { get; set; }
+    public string name { get; set; }
 
 }

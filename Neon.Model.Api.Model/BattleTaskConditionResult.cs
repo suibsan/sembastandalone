@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class BattleTaskConditionResult {
     [ProtoMember(1)]
-    public required CharacterSkillCount[] usedSkills { get; set; }
+    public CharacterSkillCount[] usedSkills { get; set; }
 
     [ProtoMember(2)]
-    public required EnemyStabilityBreakCount[] enemyStabilityBreaks { get; set; }
+    public EnemyStabilityBreakCount[] enemyStabilityBreaks { get; set; }
 
 }

@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class AdventureFindGraffitiResponse {
     [ProtoMember(2)]
-    public required Reward[] rewards { get; set; }
+    public Reward[] rewards { get; set; }
 
     [ProtoMember(3)]
-    public required Resources changedResources { get; set; }
+    public Resources changedResources { get; set; }
 
 }

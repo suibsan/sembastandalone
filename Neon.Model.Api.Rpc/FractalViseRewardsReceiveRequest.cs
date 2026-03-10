@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class FractalViseRewardsReceiveRequest {
     [ProtoMember(1)]
-    public required FractalViseRewardsReceiveMissionParam receiveMission { get; set; }
+    public FractalViseRewardsReceiveMissionParam receiveMission { get; set; }
 
     [ProtoMember(2)]
-    public required bool isReceiveTotalScoreRewards { get; set; }
+    public bool isReceiveTotalScoreRewards { get; set; }
 
 }

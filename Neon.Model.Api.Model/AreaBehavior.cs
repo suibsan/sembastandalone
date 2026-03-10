@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class AreaBehavior {
     [ProtoMember(1)]
-    public required int actionSequenceId { get; set; }
+    public int actionSequenceId { get; set; }
 
 }

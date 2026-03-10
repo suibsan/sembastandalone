@@ -8,27 +8,27 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbAtBatEventInfo {
     [ProtoMember(1)]
-    public required XbBattingInfo battingInfo { get; set; }
+    public XbBattingInfo battingInfo { get; set; }
 
     [ProtoMember(2)]
-    public required XbBattedBallInfo battedBallInfo { get; set; }
+    public XbBattedBallInfo battedBallInfo { get; set; }
 
     [ProtoMember(8)]
-    public required XbErrorInfo errorInfo { get; set; }
+    public XbErrorInfo errorInfo { get; set; }
 
     [ProtoMember(3)]
-    public required XbDefenseInfo[] defenseInfos { get; set; }
+    public XbDefenseInfo[] defenseInfos { get; set; }
 
     [ProtoMember(4)]
-    public required XbGameSituationUpdateInfo beforeGameSituation { get; set; }
+    public XbGameSituationUpdateInfo beforeGameSituation { get; set; }
 
     [ProtoMember(5)]
-    public required XbGameSituationUpdateInfo afterGameSituation { get; set; }
+    public XbGameSituationUpdateInfo afterGameSituation { get; set; }
 
     [ProtoMember(12)]
-    public required XbLogicEventInfo[] logicEventInfos { get; set; }
+    public XbLogicEventInfo[] logicEventInfos { get; set; }
 
     [ProtoMember(6)]
-    public required XbBuffInfo[] buffInfos { get; set; }
+    public XbBuffInfo[] buffInfos { get; set; }
 
 }

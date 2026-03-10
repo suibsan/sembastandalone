@@ -8,36 +8,36 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class Attack {
     [ProtoMember(1)]
-    public required int id { get; set; }
+    public int id { get; set; }
 
     [ProtoMember(3)]
-    public required float powerMultiply { get; set; }
+    public float powerMultiply { get; set; }
 
     [ProtoMember(4)]
-    public required float hitbackDistance { get; set; }
+    public float hitbackDistance { get; set; }
 
     [ProtoMember(5)]
-    public required float attackerHitSlowTime { get; set; }
+    public float attackerHitSlowTime { get; set; }
 
     [ProtoMember(6)]
-    public required float attackerHitSlowSpeed { get; set; }
+    public float attackerHitSlowSpeed { get; set; }
 
     [ProtoMember(7)]
-    public required float defenderHitSlowTime { get; set; }
+    public float defenderHitSlowTime { get; set; }
 
     [ProtoMember(8)]
-    public required float defenderHitSlowSpeed { get; set; }
+    public float defenderHitSlowSpeed { get; set; }
 
     [ProtoMember(9)]
-    public required float hitInterval { get; set; }
+    public float hitInterval { get; set; }
 
     [ProtoMember(10)]
-    public required int blowUpParameterMasterId { get; set; }
+    public int blowUpParameterMasterId { get; set; }
 
     [ProtoMember(11)]
-    public required int? hitConditionSkillId { get; set; }
+    public int? hitConditionSkillId { get; set; }
 
     [ProtoMember(14)]
-    public required int[] attackAttributes { get; set; }
+    public int[] attackAttributes { get; set; }
 
 }

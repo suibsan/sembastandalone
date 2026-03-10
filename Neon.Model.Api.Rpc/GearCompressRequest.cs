@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class GearCompressRequest {
     [ProtoMember(1)]
-    public required int[] gearEntityIds { get; set; }
+    public int[] gearEntityIds { get; set; }
 
 }

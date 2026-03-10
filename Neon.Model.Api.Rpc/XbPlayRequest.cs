@@ -8,18 +8,18 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbPlayRequest {
     [ProtoMember(1)]
-    public required int xbId { get; set; }
+    public int xbId { get; set; }
 
     [ProtoMember(3)]
-    public required int zoneAreaIndex { get; set; }
+    public int zoneAreaIndex { get; set; }
 
     [ProtoMember(4)]
-    public required int commandId { get; set; }
+    public int commandId { get; set; }
 
     [ProtoMember(5)]
-    public required int? magicOrbId { get; set; }
+    public int? magicOrbId { get; set; }
 
     [ProtoMember(2)]
-    public required bool isAtBatSkip { get; set; }
+    public bool isAtBatSkip { get; set; }
 
 }

@@ -8,24 +8,24 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbBoutInfo {
     [ProtoMember(1)]
-    public required bool boutOccurred { get; set; }
+    public bool boutOccurred { get; set; }
 
     [ProtoMember(2)]
-    public required int baseNumOfBout { get; set; }
+    public int baseNumOfBout { get; set; }
 
     [ProtoMember(3)]
-    public required int baseNumOfRunner { get; set; }
+    public int baseNumOfRunner { get; set; }
 
     [ProtoMember(4)]
-    public required int runnerMemberId { get; set; }
+    public int runnerMemberId { get; set; }
 
     [ProtoMember(6)]
-    public required int fielderMemberId { get; set; }
+    public int fielderMemberId { get; set; }
 
     [ProtoMember(7)]
-    public required bool isTouchOut { get; set; }
+    public bool isTouchOut { get; set; }
 
     [ProtoMember(8)]
-    public required XbBaseAdvanceInfo[] baseAdvanceInfos { get; set; }
+    public XbBaseAdvanceInfo[] baseAdvanceInfos { get; set; }
 
 }

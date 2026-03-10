@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbPvpFormationUpdateRequest {
     [ProtoMember(1)]
-    public required XbPvpMemberRequest[] playerMembers { get; set; }
+    public XbPvpMemberRequest[] playerMembers { get; set; }
 
 }

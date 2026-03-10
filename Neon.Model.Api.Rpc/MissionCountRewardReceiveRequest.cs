@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class MissionCountRewardReceiveRequest {
     [ProtoMember(1)]
-    public required int missionCountRewardId { get; set; }
+    public int missionCountRewardId { get; set; }
 
 }

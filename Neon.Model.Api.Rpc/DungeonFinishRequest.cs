@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class DungeonFinishRequest {
     [ProtoMember(1)]
-    public required int dungeonDifficultyId { get; set; }
+    public int dungeonDifficultyId { get; set; }
 
 }

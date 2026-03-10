@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class FractalViseNextAreaRequest {
     [ProtoMember(1)]
-    public required int fractalViseAreaId { get; set; }
+    public int fractalViseAreaId { get; set; }
 
 }

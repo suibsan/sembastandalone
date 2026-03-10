@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class SeasonPassReceiveAllResponse {
     [ProtoMember(1)]
-    public required Resources changedResources { get; set; }
+    public Resources changedResources { get; set; }
 
     [ProtoMember(2)]
-    public required Reward[] rewards { get; set; }
+    public Reward[] rewards { get; set; }
 
 }

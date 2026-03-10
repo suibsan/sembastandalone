@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class FormationSwitchRequest {
     [ProtoMember(1)]
-    public required int formationNumber { get; set; }
+    public int formationNumber { get; set; }
 
 }

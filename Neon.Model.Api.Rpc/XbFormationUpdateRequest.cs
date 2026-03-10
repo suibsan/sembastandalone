@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbFormationUpdateRequest {
     [ProtoMember(1)]
-    public required int xbId { get; set; }
+    public int xbId { get; set; }
 
     [ProtoMember(2)]
-    public required XbMemberRequest[] playerMembers { get; set; }
+    public XbMemberRequest[] playerMembers { get; set; }
 
 }

@@ -8,9 +8,9 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class UserLinksListResponse {
     [ProtoMember(1)]
-    public required bool apple { get; set; }
+    public bool apple { get; set; }
 
     [ProtoMember(2)]
-    public required bool google { get; set; }
+    public bool google { get; set; }
 
 }

@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ChangedResourcesResponse {
     [ProtoMember(1)]
-    public required Resources changedResources { get; set; }
+    public Resources changedResources { get; set; }
 
 }

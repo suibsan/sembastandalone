@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbStatusRequest {
     [ProtoMember(1)]
-    public required int xbId { get; set; }
+    public int xbId { get; set; }
 
 }

@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class UserLinkAppleRequest {
     [ProtoMember(1)]
-    public required string idToken { get; set; }
+    public string idToken { get; set; }
 
 }

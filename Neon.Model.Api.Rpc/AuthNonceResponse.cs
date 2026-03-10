@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class AuthNonceResponse {
     [ProtoMember(1)]
-    public required string nonce { get; set; }
+    public string nonce { get; set; }
 
 }

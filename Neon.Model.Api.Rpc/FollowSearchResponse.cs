@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class FollowSearchResponse {
     [ProtoMember(1)]
-    public required FollowUser user { get; set; }
+    public FollowUser user { get; set; }
 
 }

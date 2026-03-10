@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class UserDeleteResponse {
     [ProtoMember(1)]
-    public required DateTime? willDeletedAt { get; set; }
+    public DateTime? willDeletedAt { get; set; }
 
 }

@@ -8,15 +8,15 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class Challenge {
     [ProtoMember(1)]
-    public required int challengeId { get; set; }
+    public int challengeId { get; set; }
 
     [ProtoMember(2)]
-    public required int state { get; set; }
+    public int state { get; set; }
 
     [ProtoMember(3)]
-    public required DateTime? clearedAt { get; set; }
+    public DateTime? clearedAt { get; set; }
 
     [ProtoMember(4)]
-    public required DateTime? expiresAt { get; set; }
+    public DateTime? expiresAt { get; set; }
 
 }

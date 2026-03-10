@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class AuthSteamUserRequest {
     [ProtoMember(1)]
-    public required string sessionTicket { get; set; }
+    public string sessionTicket { get; set; }
 
 }

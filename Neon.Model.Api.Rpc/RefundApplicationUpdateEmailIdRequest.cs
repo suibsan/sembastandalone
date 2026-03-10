@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class RefundApplicationUpdateEmailIdRequest {
     [ProtoMember(1)]
-    public required string emailId { get; set; }
+    public string emailId { get; set; }
 
 }

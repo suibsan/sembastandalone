@@ -8,24 +8,24 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbStoryInfo {
     [ProtoMember(2)]
-    public required XbPhaseInfo phaseInfo { get; set; }
+    public XbPhaseInfo phaseInfo { get; set; }
 
     [ProtoMember(3)]
-    public required XbLibrettoInfo librettoInfo { get; set; }
+    public XbLibrettoInfo librettoInfo { get; set; }
 
     [ProtoMember(5)]
-    public required XbCommandLockInfo commandLockInfo { get; set; }
+    public XbCommandLockInfo commandLockInfo { get; set; }
 
     [ProtoMember(1)]
-    public required int[] blockadeCharacterWordsIds { get; set; }
+    public int[] blockadeCharacterWordsIds { get; set; }
 
     [ProtoMember(4)]
-    public required int? phaseClearProgressCount { get; set; }
+    public int? phaseClearProgressCount { get; set; }
 
     [ProtoMember(6)]
-    public required bool? isSuddenDeath { get; set; }
+    public bool? isSuddenDeath { get; set; }
 
     [ProtoMember(7)]
-    public required bool? isSuddenDeathChanged { get; set; }
+    public bool? isSuddenDeathChanged { get; set; }
 
 }

@@ -8,12 +8,12 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class FractalViseBossDifficultyResponse {
     [ProtoMember(1)]
-    public required FractalViseBossDifficulty[] fractalViseBossDifficulties { get; set; }
+    public FractalViseBossDifficulty[] fractalViseBossDifficulties { get; set; }
 
     [ProtoMember(3)]
-    public required bool difficultyReleased { get; set; }
+    public bool difficultyReleased { get; set; }
 
     [ProtoMember(2)]
-    public required Resources changedResources { get; set; }
+    public Resources changedResources { get; set; }
 
 }

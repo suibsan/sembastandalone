@@ -9,6 +9,6 @@ using Neon.Model.Api.Enum;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class TipReleaseByBattleRequest {
     [ProtoMember(1)]
-    public required BattleResult battleResult { get; set; }
+    public BattleResult battleResult { get; set; }
 
 }

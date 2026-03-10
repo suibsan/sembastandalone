@@ -8,12 +8,12 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class BloodStainTensionCard {
     [ProtoMember(1)]
-    public required int tensionCardId { get; set; }
+    public int tensionCardId { get; set; }
 
     [ProtoMember(2)]
-    public required int exp { get; set; }
+    public int exp { get; set; }
 
     [ProtoMember(3)]
-    public required int limitBreak { get; set; }
+    public int limitBreak { get; set; }
 
 }

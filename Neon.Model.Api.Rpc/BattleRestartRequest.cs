@@ -8,12 +8,12 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class BattleRestartRequest {
     [ProtoMember(1)]
-    public required int[] lineCharacterIds { get; set; }
+    public int[] lineCharacterIds { get; set; }
 
     [ProtoMember(2)]
-    public required int[] encounteredEnemyIds { get; set; }
+    public int[] encounteredEnemyIds { get; set; }
 
     [ProtoMember(3)]
-    public required bool isDifficultyDecrease { get; set; }
+    public bool isDifficultyDecrease { get; set; }
 
 }

@@ -8,51 +8,51 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbTeam {
     [ProtoMember(1)]
-    public required string name { get; set; }
+    public string name { get; set; }
 
     [ProtoMember(6)]
-    public required string tribeLogoAasPath { get; set; }
+    public string tribeLogoAasPath { get; set; }
 
     [ProtoMember(8)]
-    public required XbPvPUserInfo pvpUserInfo { get; set; }
+    public XbPvPUserInfo pvpUserInfo { get; set; }
 
     [ProtoMember(2)]
-    public required XbMember[] members { get; set; }
+    public XbMember[] members { get; set; }
 
     [ProtoMember(3)]
-    public required bool batFirst { get; set; }
+    public bool batFirst { get; set; }
 
     [ProtoMember(4)]
-    public required bool isPlayerTeam { get; set; }
+    public bool isPlayerTeam { get; set; }
 
     [ProtoMember(7)]
-    public required int[] inningScores { get; set; }
+    public int[] inningScores { get; set; }
 
     [ProtoMember(9)]
-    public required int currentBattingOrder { get; set; }
+    public int currentBattingOrder { get; set; }
 
     [ProtoMember(14)]
-    public required XbZoneArea[] zoneAreas { get; set; }
+    public XbZoneArea[] zoneAreas { get; set; }
 
     [ProtoMember(19)]
-    public required int? defaultZoneAreaIndex { get; set; }
+    public int? defaultZoneAreaIndex { get; set; }
 
     [ProtoMember(5)]
-    public required XbCommand selectedCommand { get; set; }
+    public XbCommand selectedCommand { get; set; }
 
     [ProtoMember(16)]
-    public required float tensionValue { get; set; }
+    public float tensionValue { get; set; }
 
     [ProtoMember(17)]
-    public required int tensionLv { get; set; }
+    public int tensionLv { get; set; }
 
     [ProtoMember(18)]
-    public required bool isTensionMax { get; set; }
+    public bool isTensionMax { get; set; }
 
     [ProtoMember(10)]
-    public required XbBlockadeZoneAreaInfo blockadeZoneAreaInfo { get; set; }
+    public XbBlockadeZoneAreaInfo blockadeZoneAreaInfo { get; set; }
 
     [ProtoMember(12)]
-    public required XbSkillOrbInfo[] skillOrbInfos { get; set; }
+    public XbSkillOrbInfo[] skillOrbInfos { get; set; }
 
 }

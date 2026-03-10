@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ShopGearShopListRequest {
     [ProtoMember(1)]
-    public required int shopId { get; set; }
+    public int shopId { get; set; }
 
 }

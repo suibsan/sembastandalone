@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ShopGearShopListResponse {
     [ProtoMember(1)]
-    public required ShopGearState shopGearState { get; set; }
+    public ShopGearState shopGearState { get; set; }
 
 }

@@ -8,12 +8,12 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ItemSynthesizeRequest {
     [ProtoMember(1)]
-    public required int itemSynthesisId { get; set; }
+    public int itemSynthesisId { get; set; }
 
     [ProtoMember(2)]
-    public required int count { get; set; }
+    public int count { get; set; }
 
     [ProtoMember(3)]
-    public required CurrentLocation currentLocation { get; set; }
+    public CurrentLocation currentLocation { get; set; }
 
 }

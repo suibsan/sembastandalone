@@ -8,12 +8,12 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class SeasonPassTierState {
     [ProtoMember(1)]
-    public required int seasonPassTierId { get; set; }
+    public int seasonPassTierId { get; set; }
 
     [ProtoMember(2)]
-    public required DateTime? freePassRewardReceivedAt { get; set; }
+    public DateTime? freePassRewardReceivedAt { get; set; }
 
     [ProtoMember(3)]
-    public required DateTime? paidPassRewardReceivedAt { get; set; }
+    public DateTime? paidPassRewardReceivedAt { get; set; }
 
 }

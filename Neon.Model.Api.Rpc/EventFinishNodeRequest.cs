@@ -9,18 +9,18 @@ using Neon.Model.Api.Enum;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class EventFinishNodeRequest {
     [ProtoMember(1)]
-    public required int eventFloorNodeId { get; set; }
+    public int eventFloorNodeId { get; set; }
 
     [ProtoMember(3)]
-    public required int[] clearedAchievementIds { get; set; }
+    public int[] clearedAchievementIds { get; set; }
 
     [ProtoMember(4)]
-    public required bool isConsumeItem { get; set; }
+    public bool isConsumeItem { get; set; }
 
     [ProtoMember(5)]
-    public required EventFloorNodeQuestResult result { get; set; }
+    public EventFloorNodeQuestResult result { get; set; }
 
     [ProtoMember(6)]
-    public required QuestResult questResult { get; set; }
+    public QuestResult questResult { get; set; }
 
 }

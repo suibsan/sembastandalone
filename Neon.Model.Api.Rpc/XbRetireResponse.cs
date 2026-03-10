@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbRetireResponse {
     [ProtoMember(1)]
-    public required XbPvpRankState rankMatchRankState { get; set; }
+    public XbPvpRankState rankMatchRankState { get; set; }
 
 }

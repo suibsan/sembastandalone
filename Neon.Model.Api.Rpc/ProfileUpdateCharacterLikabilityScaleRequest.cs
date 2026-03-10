@@ -8,6 +8,6 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class ProfileUpdateCharacterLikabilityScaleRequest {
     [ProtoMember(1)]
-    public required int scale { get; set; }
+    public int scale { get; set; }
 
 }

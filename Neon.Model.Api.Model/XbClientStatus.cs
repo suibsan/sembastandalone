@@ -8,12 +8,12 @@ using Neon.Model.Api.Model;
 [ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class XbClientStatus {
     [ProtoMember(1)]
-    public required bool? previousAtBatIsOut { get; set; }
+    public bool? previousAtBatIsOut { get; set; }
 
     [ProtoMember(2)]
-    public required bool? previousAtBatIsChance { get; set; }
+    public bool? previousAtBatIsChance { get; set; }
 
     [ProtoMember(3)]
-    public required bool? currentAtBatIsChance { get; set; }
+    public bool? currentAtBatIsChance { get; set; }
 
 }

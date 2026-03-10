@@ -23,4 +23,10 @@ public class HomeController : Controller
     {
         return "error";
     }
+
+    [Route("{**catchAll}")]
+    public IActionResult UnknownRoute() {
+        Console.WriteLine("Not implemented");
+        return StatusCode(404);
+    }
 }

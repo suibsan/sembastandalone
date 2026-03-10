@@ -4,7 +4,7 @@ import subprocess
 
 def run(cmd):
     print(cmd)
-    return subprocess.run(cmd)
+    return subprocess.run(cmd, check=True)
 
 def main():
     semba_path = pathlib.Path("semba")

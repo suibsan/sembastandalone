@@ -2,11 +2,16 @@ namespace sembastandalone.Utils;
 
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 public class SembaWrapper {
     public static JsonSerializerOptions options = new JsonSerializerOptions(
         JsonSerializerDefaults.Web
     );
+
+    static SembaWrapper() {
+        options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
+    }
 
     public static void Init(string dbPath) {
         Semba.NimMain();

@@ -1,9 +1,13 @@
+
 namespace Neon.Model.Api.Rpc;
 
 using ProtoBuf;
 
-[ProtoContract]
+using Neon.Model.Api.Model;
+
+[ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class AuthSteamUserRequest {
     [ProtoMember(1)]
-    public required string SessionTicket { get; set; }
+    public required string sessionTicket { get; set; }
+
 }

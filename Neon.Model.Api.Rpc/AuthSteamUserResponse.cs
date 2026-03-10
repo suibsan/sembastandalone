@@ -1,9 +1,13 @@
+
 namespace Neon.Model.Api.Rpc;
 
 using ProtoBuf;
 
-[ProtoContract]
+using Neon.Model.Api.Model;
+
+[ProtoContract, CompatibilityLevel(CompatibilityLevel.Level300)]
 public class AuthSteamUserResponse {
     [ProtoMember(1)]
-    public long UserId { get; set; }
+    public required long userId { get; set; }
+
 }

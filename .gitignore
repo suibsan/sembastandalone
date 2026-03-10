@@ -3,3 +3,5 @@ obj
 bin
 /semba
 /semba_build
+/semba.db
+/libsemba.dll

@@ -1,3 +1,7 @@
+using sembastandalone.Utils;
+
+SembaWrapper.Init("semba.db");
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,12 +17,17 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
+app.Use(async (context, next) =>
+{
+    Console.WriteLine($"Path: {context.Request.Path}");
+    
+    await next(context);
+});
 
 app.Run();

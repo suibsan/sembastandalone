@@ -1,0 +1,12 @@
+namespace sembastandalone.Models;
+
+using Neon.Model.Api.Rpc;
+using sembastandalone.Utils;
+
+using System.Text.Json; 
+
+public class UserModel {
+    public static UserLogInResponse? User_LogIn() {
+        return SembaWrapper.Call<UserLogInResponse>("/user/log_in");
+    }
+}

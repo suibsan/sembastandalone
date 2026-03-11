@@ -5,20 +5,20 @@ using sembastandalone.Utils;
 
 public class AuthModel {
     public static AuthSteamUserResponse? Auth_SteamUser(AuthSteamUserRequest req) {
-        Console.WriteLine($"C#: SessionTicket={req.sessionTicket}");
-        return SembaWrapper.Call<AuthSteamUserResponse, AuthSteamUserRequest>(
-            "/auth/steam_user", req
+        Console.WriteLine($"C#: SessionTicket={req.SessionTicket}");
+        return AuthSteamUserResponse.Parser.ParseJson(
+            SembaWrapper.Call("/auth/steam_user", req.ToString())
         );
     }
 
     public static AuthSignInResponse? Auth_SignIn(AuthSignInRequest req) {
-        Console.WriteLine($"C#: DeviceModel={req.deviceModel}");
-        return SembaWrapper.Call<AuthSignInResponse, AuthSignInRequest>(
-            "/auth/sign_in", req
+        Console.WriteLine($"C#: DeviceModel={req.DeviceModel}");
+        return AuthSignInResponse.Parser.ParseJson(
+            SembaWrapper.Call("/auth/sign_in", req.ToString())
         );
     }
 
     public static AuthNonceResponse? Auth_Nonce() {
-        return SembaWrapper.Call<AuthNonceResponse>("/auth/nonce");
+        return AuthNonceResponse.Parser.ParseJson(SembaWrapper.Call("/auth/nonce", ""));
     }
 }

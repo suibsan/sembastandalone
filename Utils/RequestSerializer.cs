@@ -2,7 +2,8 @@ namespace sembastandalone.Utils;
 
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
-using ProtoBuf;
+using Google.Protobuf;
+using System.Reflection;
 
 public class RequestSerializer {
     private static async Task<byte[]> GetBodyAsync(HttpRequest req) {
@@ -12,15 +13,19 @@ public class RequestSerializer {
         }
     }
 
-    public static async Task<T> Deserialize<T>(HttpRequest req) {
+    public static async Task<T> Deserialize<T>(HttpRequest req) where T : IMessage, new() {
         var data = await GetBodyAsync(req);
         var decData = Encryptor.DecryptData(data);
-        return Serializer.Deserialize<T>(new ReadOnlySpan<byte>(decData));
+
+        T res = new T();
+        res.MergeFrom(decData);
+
+        return res;
     }
 
-    public static FileContentResult Serialize<T>(T obj) {
+    public static FileContentResult Serialize<T>(T obj) where T : IMessage {
         using (var ms = new MemoryStream()) {
-            Serializer.Serialize(ms, obj);
+            obj.WriteTo(ms);
             var data = ms.ToArray();
             var encData = Encryptor.EncryptData(data, 0);
             return new FileContentResult(encData, "application/octet-stream");

@@ -7,6 +7,6 @@ using System.Text.Json;
 
 public class UserModel {
     public static UserLogInResponse? User_LogIn() {
-        return SembaWrapper.Call<UserLogInResponse>("/user/log_in");
+        return UserLogInResponse.Parser.ParseJson(SembaWrapper.Call("/user/log_in", ""));
     }
 }

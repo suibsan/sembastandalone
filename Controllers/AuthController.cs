@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using ProtoBuf;
 
 using sembastandalone.Utils;
 using sembastandalone.Models;

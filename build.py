@@ -1,6 +1,9 @@
 import argparse
 import pathlib
 import subprocess
+import platform
+
+SEMBA_LIB_FILENAME = "libsemba.dll" if platform.system() == "Windows" else "libsemba.so"
 
 def run(cmd):
     print(cmd)
@@ -27,7 +30,7 @@ def main():
 
     run(["cp", str(semba_build_path/"semba.db"), str(dotnet_publish_path)])
 
-    run(["cp", str(semba_build_path/"libsemba.dll"), str(dotnet_publish_path)])
+    run(["cp", str(semba_build_path/SEMBA_LIB_FILENAME), str(dotnet_publish_path)])
 
 if __name__ == "__main__":
     main()

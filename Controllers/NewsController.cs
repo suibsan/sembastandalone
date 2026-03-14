@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 
 using sembastandalone.Utils;
@@ -7,27 +8,32 @@ using Neon.Model.Api.Rpc;
 namespace sembastandalone.Controllers;
 
 public class NewsController : Controller {
-    [Route("/news/list")]
-    public async Task<IActionResult> News_List() {
-        var req = await RequestSerializer.Deserialize<NewsListRequest>(Request);
 
-        var res = NewsModel.News_List(req);
+[Route("/news/list")]
+public async Task<IActionResult> News_List() {
+    var req = await RequestSerializer.Deserialize<NewsListRequest>(Request);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+    var res = NewsModel.News_List(req);
 
-        return RequestSerializer.Serialize(res);
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/news/user_list")]
-    public IActionResult News_UserList() {
-        var res = NewsModel.News_UserList();
+    return RequestSerializer.Serialize(res);
+}
 
-        if (res == null) {
-            return StatusCode(500);
-        }
 
-        return RequestSerializer.Serialize(res);
+[Route("/news/user_list")]
+public IActionResult News_UserList() {
+    // no request
+
+    var res = NewsModel.News_UserList();
+
+    if (res == null) {
+        return StatusCode(500);
     }
+
+    return RequestSerializer.Serialize(res);
+}
+
 }

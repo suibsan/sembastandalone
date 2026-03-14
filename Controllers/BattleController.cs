@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 
 using sembastandalone.Utils;
@@ -7,29 +8,60 @@ using Neon.Model.Api.Rpc;
 namespace sembastandalone.Controllers;
 
 public class BattleController : Controller {
-    [Route("/battle/finish")]
-    public async Task<IActionResult> Battle_Finish() {
-        var req = await RequestSerializer.Deserialize<BattleFinishRequest>(Request);
 
-        var res = BattleModel.Battle_Finish(req);
+[Route("/battle/finish")]
+public async Task<IActionResult> Battle_Finish() {
+    var req = await RequestSerializer.Deserialize<BattleFinishRequest>(Request);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+    var res = BattleModel.Battle_Finish(req);
 
-        return RequestSerializer.Serialize(res);
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/battle/start")]
-    public async Task<IActionResult> Battle_Start() {
-        var req = await RequestSerializer.Deserialize<BattleStartRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = BattleModel.Battle_Start(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/battle/restart")]
+public async Task<IActionResult> Battle_Restart() {
+    var req = await RequestSerializer.Deserialize<BattleRestartRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = BattleModel.Battle_Restart(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/battle/skip")]
+public async Task<IActionResult> Battle_Skip() {
+    var req = await RequestSerializer.Deserialize<BattleSkipRequest>(Request);
+
+    var res = BattleModel.Battle_Skip(req);
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/battle/start")]
+public async Task<IActionResult> Battle_Start() {
+    var req = await RequestSerializer.Deserialize<BattleStartRequest>(Request);
+
+    var res = BattleModel.Battle_Start(req);
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
 }

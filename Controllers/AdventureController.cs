@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 
 using sembastandalone.Utils;
@@ -7,120 +8,158 @@ using Neon.Model.Api.Rpc;
 namespace sembastandalone.Controllers;
 
 public class AdventureController : Controller {
-    [Route("/adventure/access_warp_point")]
-    public async Task<IActionResult> Adventure_AccessWarpPoint() {
-        var req = await RequestSerializer.Deserialize<AdventureAccessWarpPointRequest>(Request);
 
-        var res = AdventureModel.Adventure_AccessWarpPoint(req);
+[Route("/adventure/access_warp_point")]
+public async Task<IActionResult> Adventure_AccessWarpPoint() {
+    var req = await RequestSerializer.Deserialize<AdventureAccessWarpPointRequest>(Request);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+    var res = AdventureModel.Adventure_AccessWarpPoint(req);
 
-        return RequestSerializer.Serialize(res);
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/adventure/acquire_area_item")]
-    public async Task<IActionResult> Adventure_AcquireAreaItem() {
-        var req = await RequestSerializer.Deserialize<AdventureAcquireAreaItemRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = AdventureModel.Adventure_AcquireAreaItem(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/adventure/acquire_area_item")]
+public async Task<IActionResult> Adventure_AcquireAreaItem() {
+    var req = await RequestSerializer.Deserialize<AdventureAcquireAreaItemRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = AdventureModel.Adventure_AcquireAreaItem(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/adventure/area_object")]
-    public async Task<IActionResult> Adventure_AreaObject() {
-        var req = await RequestSerializer.Deserialize<AdventureAreaObjectRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = AdventureModel.Adventure_AreaObject(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/adventure/area_object")]
+public async Task<IActionResult> Adventure_AreaObject() {
+    var req = await RequestSerializer.Deserialize<AdventureAreaObjectRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = AdventureModel.Adventure_AreaObject(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/adventure/hospital")]
-    public async Task<IActionResult> Adventure_Hospital() {
-        var req = await RequestSerializer.Deserialize<AdventureHospitalRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = AdventureModel.Adventure_Hospital(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/adventure/find_graffiti")]
+public async Task<IActionResult> Adventure_FindGraffiti() {
+    var req = await RequestSerializer.Deserialize<AdventureFindGraffitiRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = AdventureModel.Adventure_FindGraffiti(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/adventure/move_to_area")]
-    public async Task<IActionResult> Adventure_MoveToArea() {
-        var req = await RequestSerializer.Deserialize<AdventureMoveToAreaRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = AdventureModel.Adventure_MoveToArea(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/adventure/hospital")]
+public async Task<IActionResult> Adventure_Hospital() {
+    var req = await RequestSerializer.Deserialize<AdventureHospitalRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = AdventureModel.Adventure_Hospital(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/adventure/read_sequence")]
-    public async Task<IActionResult> Adventure_ReadSequence() {
-        var req = await RequestSerializer.Deserialize<AdventureReadSequenceRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = AdventureModel.Adventure_ReadSequence(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/adventure/move_to_area")]
+public async Task<IActionResult> Adventure_MoveToArea() {
+    var req = await RequestSerializer.Deserialize<AdventureMoveToAreaRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = AdventureModel.Adventure_MoveToArea(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/adventure/release_event_lift")]
-    public async Task<IActionResult> Adventure_ReleaseEventLift() {
-        var req = await RequestSerializer.Deserialize<AdventureReleaseEventLiftRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = AdventureModel.Adventure_ReleaseEventLift(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/adventure/read_sequence")]
+public async Task<IActionResult> Adventure_ReadSequence() {
+    var req = await RequestSerializer.Deserialize<AdventureReadSequenceRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = AdventureModel.Adventure_ReadSequence(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/adventure/update_character_status")]
-    public async Task<IActionResult> Adventure_UpdateCharacterStatus() {
-        var req = await RequestSerializer.Deserialize<AdventureUpdateCharacterStatusRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = AdventureModel.Adventure_UpdateCharacterStatus(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/adventure/release_event_lift")]
+public async Task<IActionResult> Adventure_ReleaseEventLift() {
+    var req = await RequestSerializer.Deserialize<AdventureReleaseEventLiftRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = AdventureModel.Adventure_ReleaseEventLift(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/adventure/warp_area_locator")]
-    public async Task<IActionResult> Adventure_WarpAreaLocator() {
-        var req = await RequestSerializer.Deserialize<AdventureWarpAreaLocatorRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = AdventureModel.Adventure_WarpAreaLocator(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/adventure/track_target")]
+public async Task<IActionResult> Adventure_TrackTarget() {
+    var req = await RequestSerializer.Deserialize<AdventureTrackTargetRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = AdventureModel.Adventure_TrackTarget(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/adventure/update_character_status")]
+public async Task<IActionResult> Adventure_UpdateCharacterStatus() {
+    var req = await RequestSerializer.Deserialize<AdventureUpdateCharacterStatusRequest>(Request);
+
+    var res = AdventureModel.Adventure_UpdateCharacterStatus(req);
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/adventure/warp_area_locator")]
+public async Task<IActionResult> Adventure_WarpAreaLocator() {
+    var req = await RequestSerializer.Deserialize<AdventureWarpAreaLocatorRequest>(Request);
+
+    var res = AdventureModel.Adventure_WarpAreaLocator(req);
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
 }

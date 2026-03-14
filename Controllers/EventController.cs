@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 
 using sembastandalone.Utils;
@@ -7,27 +8,32 @@ using Neon.Model.Api.Rpc;
 namespace sembastandalone.Controllers;
 
 public class EventController : Controller {
-    [Route("/event/finish_node")]
-    public async Task<IActionResult> Event_FinishNode() {
-        var req = await RequestSerializer.Deserialize<EventFinishNodeRequest>(Request);
 
-        var res = EventModel.Event_FinishNode(req);
+[Route("/event/finish_node")]
+public async Task<IActionResult> Event_FinishNode() {
+    var req = await RequestSerializer.Deserialize<EventFinishNodeRequest>(Request);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+    var res = EventModel.Event_FinishNode(req);
 
-        return RequestSerializer.Serialize(res);
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/event/list_node")]
-    public IActionResult Event_ListNode() {
-        var res = EventModel.Event_ListNode();
+    return RequestSerializer.Serialize(res);
+}
 
-        if (res == null) {
-            return StatusCode(500);
-        }
 
-        return RequestSerializer.Serialize(res);
+[Route("/event/list_node")]
+public IActionResult Event_ListNode() {
+    // no request
+
+    var res = EventModel.Event_ListNode();
+
+    if (res == null) {
+        return StatusCode(500);
     }
+
+    return RequestSerializer.Serialize(res);
+}
+
 }

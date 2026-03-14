@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 
 using sembastandalone.Utils;
@@ -7,36 +8,156 @@ using Neon.Model.Api.Rpc;
 namespace sembastandalone.Controllers;
 
 public class UserController : Controller {
-    [Route("/user/cross_date")]
-    public IActionResult User_CrossDate() {
-        var res = UserModel.User_CrossDate();
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/user/cross_date")]
+public IActionResult User_CrossDate() {
+    // no request
 
-        return RequestSerializer.Serialize(res);
+    var res = UserModel.User_CrossDate();
+
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/user/log_in")]
-    public IActionResult User_LogIn() {
-        var res = UserModel.User_LogIn();
+    return RequestSerializer.Serialize(res);
+}
 
-        if (res == null) {
-            return StatusCode(500);
-        }
 
-        return RequestSerializer.Serialize(res);
+[Route("/user/delete")]
+public IActionResult User_Delete() {
+    // no request
+
+    var res = UserModel.User_Delete();
+
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/user/notification")]
-    public IActionResult User_Notification() {
-        var res = UserModel.User_Notification();
+    return RequestSerializer.Serialize(res);
+}
 
-        if (res == null) {
-            return StatusCode(500);
-        }
 
-        return RequestSerializer.Serialize(res);
+[Route("/user/link_apple")]
+public async Task<IActionResult> User_LinkApple() {
+    var req = await RequestSerializer.Deserialize<UserLinkAppleRequest>(Request);
+
+    var res = UserModel.User_LinkApple(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/user/link_google")]
+public async Task<IActionResult> User_LinkGoogle() {
+    var req = await RequestSerializer.Deserialize<UserLinkGoogleRequest>(Request);
+
+    var res = UserModel.User_LinkGoogle(req);
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/user/links_list")]
+public IActionResult User_LinksList() {
+    // no request
+
+    var res = UserModel.User_LinksList();
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/user/log_in")]
+public IActionResult User_LogIn() {
+    // no request
+
+    var res = UserModel.User_LogIn();
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/user/notification")]
+public IActionResult User_Notification() {
+    // no request
+
+    var res = UserModel.User_Notification();
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/user/unlink_apple")]
+public void User_UnlinkApple() {
+    // no request
+
+    UserModel.User_UnlinkApple();
+
+    // no response
+}
+
+
+[Route("/user/unlink_google")]
+public void User_UnlinkGoogle() {
+    // no request
+
+    UserModel.User_UnlinkGoogle();
+
+    // no response
+}
+
+
+[Route("/user/unlink_steam")]
+public void User_UnlinkSteam() {
+    // no request
+
+    UserModel.User_UnlinkSteam();
+
+    // no response
+}
+
+
+[Route("/user/update_birthdate")]
+public async Task<IActionResult> User_UpdateBirthdate() {
+    var req = await RequestSerializer.Deserialize<UserUpdateBirthdateRequest>(Request);
+
+    var res = UserModel.User_UpdateBirthdate(req);
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/user/update_language")]
+public async Task User_UpdateLanguage() {
+    var req = await RequestSerializer.Deserialize<UserUpdateLanguageRequest>(Request);
+
+    UserModel.User_UpdateLanguage(req);
+
+    // no response
+}
+
 }

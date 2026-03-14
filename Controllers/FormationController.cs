@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 
 using sembastandalone.Utils;
@@ -7,29 +8,32 @@ using Neon.Model.Api.Rpc;
 namespace sembastandalone.Controllers;
 
 public class FormationController : Controller {
-    [Route("/formation/switch")]
-    public async Task<IActionResult> Formation_Switch() {
-        var req = await RequestSerializer.Deserialize<FormationSwitchRequest>(Request);
 
-        var res = FormationModel.Formation_Switch(req);
+[Route("/formation/switch")]
+public async Task<IActionResult> Formation_Switch() {
+    var req = await RequestSerializer.Deserialize<FormationSwitchRequest>(Request);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+    var res = FormationModel.Formation_Switch(req);
 
-        return RequestSerializer.Serialize(res);
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/formation/update")]
-    public async Task<IActionResult> Formation_Update() {
-        var req = await RequestSerializer.Deserialize<FormationUpdateRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = FormationModel.Formation_Update(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/formation/update")]
+public async Task<IActionResult> Formation_Update() {
+    var req = await RequestSerializer.Deserialize<FormationUpdateRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = FormationModel.Formation_Update(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
+
+    return RequestSerializer.Serialize(res);
+}
+
 }

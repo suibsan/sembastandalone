@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 
 using sembastandalone.Utils;
@@ -7,29 +8,74 @@ using Neon.Model.Api.Rpc;
 namespace sembastandalone.Controllers;
 
 public class TensionCardController : Controller {
-    [Route("/tension_card/limit_break_enhance")]
-    public async Task<IActionResult> TensionCard_LimitBreakEnhance() {
-        var req = await RequestSerializer.Deserialize<TensionCardLimitBreakEnhanceRequest>(Request);
 
-        var res = TensionCardModel.TensionCard_LimitBreakEnhance(req);
+[Route("/tension_card/disassemble")]
+public async Task<IActionResult> TensionCard_Disassemble() {
+    var req = await RequestSerializer.Deserialize<TensionCardDisassembleRequest>(Request);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+    var res = TensionCardModel.TensionCard_Disassemble(req);
 
-        return RequestSerializer.Serialize(res);
+    if (res == null) {
+        return StatusCode(500);
     }
 
-    [Route("/tension_card/lock")]
-    public async Task<IActionResult> TensionCard_Lock() {
-        var req = await RequestSerializer.Deserialize<TensionCardLockRequest>(Request);
+    return RequestSerializer.Serialize(res);
+}
 
-        var res = TensionCardModel.TensionCard_Lock(req);
 
-        if (res == null) {
-            return StatusCode(500);
-        }
+[Route("/tension_card/enhance")]
+public async Task<IActionResult> TensionCard_Enhance() {
+    var req = await RequestSerializer.Deserialize<TensionCardEnhanceRequest>(Request);
 
-        return RequestSerializer.Serialize(res);
+    var res = TensionCardModel.TensionCard_Enhance(req);
+
+    if (res == null) {
+        return StatusCode(500);
     }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/tension_card/level_limit_enhance")]
+public async Task<IActionResult> TensionCard_LevelLimitEnhance() {
+    var req = await RequestSerializer.Deserialize<TensionCardLevelLimitEnhanceRequest>(Request);
+
+    var res = TensionCardModel.TensionCard_LevelLimitEnhance(req);
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/tension_card/limit_break_enhance")]
+public async Task<IActionResult> TensionCard_LimitBreakEnhance() {
+    var req = await RequestSerializer.Deserialize<TensionCardLimitBreakEnhanceRequest>(Request);
+
+    var res = TensionCardModel.TensionCard_LimitBreakEnhance(req);
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
+
+[Route("/tension_card/lock")]
+public async Task<IActionResult> TensionCard_Lock() {
+    var req = await RequestSerializer.Deserialize<TensionCardLockRequest>(Request);
+
+    var res = TensionCardModel.TensionCard_Lock(req);
+
+    if (res == null) {
+        return StatusCode(500);
+    }
+
+    return RequestSerializer.Serialize(res);
+}
+
 }

@@ -47,7 +47,7 @@ def gen_controller(route, class_, method_name, req_type, res_type):
 public {return_val} {method_name}() {{
     {req_assignment}
 
-    {res_assignment}{class_}Model.{method_name}({req_arg});
+    {res_assignment}model.{method_name}({req_arg});
 
     {serialize_res}}}
 """
@@ -63,7 +63,7 @@ def gen_model(route, class_, method_name, req_type, res_type):
         req_param = ""
         req_tostring = '""'
 
-    semba_wrapper_call = f"""SembaWrapper.Call("{route}", {req_tostring})"""
+    semba_wrapper_call = f"""sembaWrapper.Call("{route}", {req_tostring})"""
 
     if res_type != "None":
         return_type = f"{res_type}?"
@@ -75,7 +75,7 @@ def gen_model(route, class_, method_name, req_type, res_type):
         return_parsejson = semba_wrapper_call
 
     return f"""
-public static {return_type} {method_name}({req_param}) {{
+public {return_type} {method_name}({req_param}) {{
     {req_log}
     {return_parsejson};
 }}
@@ -92,6 +92,16 @@ def gen_controller_and_model(method_name, req_type, res_type):
     model = gen_model(route, class_, method_name, req_type, res_type)
     
     return route, controller, model
+
+
+def gen_model_constructor(class_):
+    return f"""
+private ISembaWrapper sembaWrapper;
+
+public {class_}Model(ISembaWrapper wrapper) {{
+    sembaWrapper = wrapper;
+}}
+"""
 
 
 def test_signature_with_req_and_res():
@@ -119,10 +129,10 @@ public async Task<IActionResult> Adventure_AccessWarpPoint() {
 """
 
     assert model == """
-public static AdventureAccessWarpPointResponse? Adventure_AccessWarpPoint(AdventureAccessWarpPointRequest req) {
+public AdventureAccessWarpPointResponse? Adventure_AccessWarpPoint(AdventureAccessWarpPointRequest req) {
     Console.WriteLine($"Adventure_AccessWarpPoint: {req}");
     return AdventureAccessWarpPointResponse.Parser.ParseJson(
-        SembaWrapper.Call("/adventure/access_warp_point", req.ToString())
+        sembaWrapper.Call("/adventure/access_warp_point", req.ToString())
     );
 }
 """
@@ -153,10 +163,10 @@ public IActionResult Auth_Nonce() {
 """
 
     assert model == """
-public static AuthNonceResponse? Auth_Nonce() {
+public AuthNonceResponse? Auth_Nonce() {
     // no request
     return AuthNonceResponse.Parser.ParseJson(
-        SembaWrapper.Call("/auth/nonce", "")
+        sembaWrapper.Call("/auth/nonce", "")
     );
 }
 """
@@ -183,9 +193,9 @@ public async Task User_UpdateLanguage() {
 """
 
     assert model == """
-public static void User_UpdateLanguage(UserUpdateLanguageRequest req) {
+public void User_UpdateLanguage(UserUpdateLanguageRequest req) {
     Console.WriteLine($"User_UpdateLanguage: {req}");
-    SembaWrapper.Call("/user/update_language", req.ToString());
+    sembaWrapper.Call("/user/update_language", req.ToString());
 }
 """
 
@@ -211,9 +221,19 @@ public void Xb_ForceRetire() {
 """
 
     assert model == """
-public static void Xb_ForceRetire() {
+public void Xb_ForceRetire() {
     // no request
-    SembaWrapper.Call("/xb/force_retire", "");
+    sembaWrapper.Call("/xb/force_retire", "");
+}
+"""
+
+
+def test_gen_model_constructor():
+    assert gen_model_constructor("Auth") == """
+private ISembaWrapper sembaWrapper;
+
+public AuthModel(SembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 """
 
@@ -223,6 +243,7 @@ def test_generator():
     test_signature_without_req()
     test_signature_without_res()
     test_signature_without_both()
+    test_gen_model_constructor()
 
     print("OK")
 

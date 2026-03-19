@@ -3,7 +3,7 @@ from collections import defaultdict
 from pathlib import Path
 import re
 
-from generator import gen_controller_and_model
+from generator import gen_controller_and_model, gen_model_constructor
 
 def main():
     parser = ArgumentParser()
@@ -36,6 +36,8 @@ def main():
         
         model_methods = models[class_]
 
+        model_methods.append(gen_model_constructor(class_))
+
         with open(args.models_out/f"{class_}Model.cs", "w", encoding="utf-8") as f:
             write_model(f, class_, model_methods)
 
@@ -51,6 +53,13 @@ using Neon.Model.Api.Rpc;
 namespace sembastandalone.Controllers;
 
 public class {class_}Controller : Controller {{
+
+private {class_}Model model;
+
+public {class_}Controller(ISembaWrapper wrapper) {{
+    model = new {class_}Model(wrapper);
+}}
+
 {"\n".join(controller_methods)}
 }}
 """)

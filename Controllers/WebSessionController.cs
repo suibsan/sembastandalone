@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class WebSessionController : Controller {
 
+private WebSessionModel model;
+
+public WebSessionController(ISembaWrapper wrapper) {
+    model = new WebSessionModel(wrapper);
+}
+
+
 [Route("/web_session/token")]
 public IActionResult WebSession_Token() {
     // no request
 
-    var res = WebSessionModel.WebSession_Token();
+    var res = model.WebSession_Token();
 
     if (res == null) {
         return StatusCode(500);

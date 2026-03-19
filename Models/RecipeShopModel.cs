@@ -6,11 +6,18 @@ using sembastandalone.Utils;
 
 public class RecipeShopModel {
 
-public static ChangedResourcesResponse? RecipeShop_Purchase(RecipeShopPurchaseRequest req) {
+public ChangedResourcesResponse? RecipeShop_Purchase(RecipeShopPurchaseRequest req) {
     Console.WriteLine($"RecipeShop_Purchase: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/recipe_shop/purchase", req.ToString())
+        sembaWrapper.Call("/recipe_shop/purchase", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public RecipeShopModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

@@ -6,91 +6,98 @@ using sembastandalone.Utils;
 
 public class UserModel {
 
-public static UserCrossDateResponse? User_CrossDate() {
+public UserCrossDateResponse? User_CrossDate() {
     // no request
     return UserCrossDateResponse.Parser.ParseJson(
-        SembaWrapper.Call("/user/cross_date", "")
+        sembaWrapper.Call("/user/cross_date", "")
     );
 }
 
 
-public static UserDeleteResponse? User_Delete() {
+public UserDeleteResponse? User_Delete() {
     // no request
     return UserDeleteResponse.Parser.ParseJson(
-        SembaWrapper.Call("/user/delete", "")
+        sembaWrapper.Call("/user/delete", "")
     );
 }
 
 
-public static ChangedResourcesResponse? User_LinkApple(UserLinkAppleRequest req) {
+public ChangedResourcesResponse? User_LinkApple(UserLinkAppleRequest req) {
     Console.WriteLine($"User_LinkApple: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/user/link_apple", req.ToString())
+        sembaWrapper.Call("/user/link_apple", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? User_LinkGoogle(UserLinkGoogleRequest req) {
+public ChangedResourcesResponse? User_LinkGoogle(UserLinkGoogleRequest req) {
     Console.WriteLine($"User_LinkGoogle: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/user/link_google", req.ToString())
+        sembaWrapper.Call("/user/link_google", req.ToString())
     );
 }
 
 
-public static UserLinksListResponse? User_LinksList() {
+public UserLinksListResponse? User_LinksList() {
     // no request
     return UserLinksListResponse.Parser.ParseJson(
-        SembaWrapper.Call("/user/links_list", "")
+        sembaWrapper.Call("/user/links_list", "")
     );
 }
 
 
-public static UserLogInResponse? User_LogIn() {
+public UserLogInResponse? User_LogIn() {
     // no request
     return UserLogInResponse.Parser.ParseJson(
-        SembaWrapper.Call("/user/log_in", "")
+        sembaWrapper.Call("/user/log_in", "")
     );
 }
 
 
-public static ChangedResourcesResponse? User_Notification() {
+public ChangedResourcesResponse? User_Notification() {
     // no request
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/user/notification", "")
+        sembaWrapper.Call("/user/notification", "")
     );
 }
 
 
-public static void User_UnlinkApple() {
+public void User_UnlinkApple() {
     // no request
-    SembaWrapper.Call("/user/unlink_apple", "");
+    sembaWrapper.Call("/user/unlink_apple", "");
 }
 
 
-public static void User_UnlinkGoogle() {
+public void User_UnlinkGoogle() {
     // no request
-    SembaWrapper.Call("/user/unlink_google", "");
+    sembaWrapper.Call("/user/unlink_google", "");
 }
 
 
-public static void User_UnlinkSteam() {
+public void User_UnlinkSteam() {
     // no request
-    SembaWrapper.Call("/user/unlink_steam", "");
+    sembaWrapper.Call("/user/unlink_steam", "");
 }
 
 
-public static ChangedResourcesResponse? User_UpdateBirthdate(UserUpdateBirthdateRequest req) {
+public ChangedResourcesResponse? User_UpdateBirthdate(UserUpdateBirthdateRequest req) {
     Console.WriteLine($"User_UpdateBirthdate: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/user/update_birthdate", req.ToString())
+        sembaWrapper.Call("/user/update_birthdate", req.ToString())
     );
 }
 
 
-public static void User_UpdateLanguage(UserUpdateLanguageRequest req) {
+public void User_UpdateLanguage(UserUpdateLanguageRequest req) {
     Console.WriteLine($"User_UpdateLanguage: {req}");
-    SembaWrapper.Call("/user/update_language", req.ToString());
+    sembaWrapper.Call("/user/update_language", req.ToString());
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public UserModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

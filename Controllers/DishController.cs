@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class DishController : Controller {
 
+private DishModel model;
+
+public DishController(ISembaWrapper wrapper) {
+    model = new DishModel(wrapper);
+}
+
+
 [Route("/dish/order")]
 public async Task<IActionResult> Dish_Order() {
     var req = await RequestSerializer.Deserialize<DishOrderRequest>(Request);
 
-    var res = DishModel.Dish_Order(req);
+    var res = model.Dish_Order(req);
 
     if (res == null) {
         return StatusCode(500);

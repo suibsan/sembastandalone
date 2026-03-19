@@ -6,27 +6,34 @@ using sembastandalone.Utils;
 
 public class MailModel {
 
-public static MailDeleteResponse? Mail_Delete(MailDeleteRequest req) {
+public MailDeleteResponse? Mail_Delete(MailDeleteRequest req) {
     Console.WriteLine($"Mail_Delete: {req}");
     return MailDeleteResponse.Parser.ParseJson(
-        SembaWrapper.Call("/mail/delete", req.ToString())
+        sembaWrapper.Call("/mail/delete", req.ToString())
     );
 }
 
 
-public static MailListResponse? Mail_List() {
+public MailListResponse? Mail_List() {
     // no request
     return MailListResponse.Parser.ParseJson(
-        SembaWrapper.Call("/mail/list", "")
+        sembaWrapper.Call("/mail/list", "")
     );
 }
 
 
-public static MailOpenResponse? Mail_Open(MailOpenRequest req) {
+public MailOpenResponse? Mail_Open(MailOpenRequest req) {
     Console.WriteLine($"Mail_Open: {req}");
     return MailOpenResponse.Parser.ParseJson(
-        SembaWrapper.Call("/mail/open", req.ToString())
+        sembaWrapper.Call("/mail/open", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public MailModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

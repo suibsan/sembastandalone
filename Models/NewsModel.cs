@@ -6,19 +6,26 @@ using sembastandalone.Utils;
 
 public class NewsModel {
 
-public static NewsListResponse? News_List(NewsListRequest req) {
+public NewsListResponse? News_List(NewsListRequest req) {
     Console.WriteLine($"News_List: {req}");
     return NewsListResponse.Parser.ParseJson(
-        SembaWrapper.Call("/news/list", req.ToString())
+        sembaWrapper.Call("/news/list", req.ToString())
     );
 }
 
 
-public static NewsUserListResponse? News_UserList() {
+public NewsUserListResponse? News_UserList() {
     // no request
     return NewsUserListResponse.Parser.ParseJson(
-        SembaWrapper.Call("/news/user_list", "")
+        sembaWrapper.Call("/news/user_list", "")
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public NewsModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

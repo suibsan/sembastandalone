@@ -6,19 +6,26 @@ using sembastandalone.Utils;
 
 public class EventModel {
 
-public static EventFinishNodeResponse? Event_FinishNode(EventFinishNodeRequest req) {
+public EventFinishNodeResponse? Event_FinishNode(EventFinishNodeRequest req) {
     Console.WriteLine($"Event_FinishNode: {req}");
     return EventFinishNodeResponse.Parser.ParseJson(
-        SembaWrapper.Call("/event/finish_node", req.ToString())
+        sembaWrapper.Call("/event/finish_node", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? Event_ListNode() {
+public ChangedResourcesResponse? Event_ListNode() {
     // no request
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/event/list_node", "")
+        sembaWrapper.Call("/event/list_node", "")
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public EventModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

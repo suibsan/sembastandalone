@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class FollowController : Controller {
 
+private FollowModel model;
+
+public FollowController(ISembaWrapper wrapper) {
+    model = new FollowModel(wrapper);
+}
+
+
 [Route("/follow/add")]
 public async Task<IActionResult> Follow_Add() {
     var req = await RequestSerializer.Deserialize<FollowAddRequest>(Request);
 
-    var res = FollowModel.Follow_Add(req);
+    var res = model.Follow_Add(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Follow_Add() {
 public async Task<IActionResult> Follow_Detail() {
     var req = await RequestSerializer.Deserialize<FollowDetailRequest>(Request);
 
-    var res = FollowModel.Follow_Detail(req);
+    var res = model.Follow_Detail(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> Follow_Detail() {
 public IActionResult Follow_List() {
     // no request
 
-    var res = FollowModel.Follow_List();
+    var res = model.Follow_List();
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public IActionResult Follow_List() {
 public async Task<IActionResult> Follow_Remove() {
     var req = await RequestSerializer.Deserialize<FollowRemoveRequest>(Request);
 
-    var res = FollowModel.Follow_Remove(req);
+    var res = model.Follow_Remove(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> Follow_Remove() {
 public async Task<IActionResult> Follow_Search() {
     var req = await RequestSerializer.Deserialize<FollowSearchRequest>(Request);
 
-    var res = FollowModel.Follow_Search(req);
+    var res = model.Follow_Search(req);
 
     if (res == null) {
         return StatusCode(500);

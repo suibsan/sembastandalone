@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class FormationController : Controller {
 
+private FormationModel model;
+
+public FormationController(ISembaWrapper wrapper) {
+    model = new FormationModel(wrapper);
+}
+
+
 [Route("/formation/switch")]
 public async Task<IActionResult> Formation_Switch() {
     var req = await RequestSerializer.Deserialize<FormationSwitchRequest>(Request);
 
-    var res = FormationModel.Formation_Switch(req);
+    var res = model.Formation_Switch(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Formation_Switch() {
 public async Task<IActionResult> Formation_Update() {
     var req = await RequestSerializer.Deserialize<FormationUpdateRequest>(Request);
 
-    var res = FormationModel.Formation_Update(req);
+    var res = model.Formation_Update(req);
 
     if (res == null) {
         return StatusCode(500);

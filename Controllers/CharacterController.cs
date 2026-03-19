@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class CharacterController : Controller {
 
+private CharacterModel model;
+
+public CharacterController(ISembaWrapper wrapper) {
+    model = new CharacterModel(wrapper);
+}
+
+
 [Route("/character/costume_update")]
 public async Task<IActionResult> Character_CostumeUpdate() {
     var req = await RequestSerializer.Deserialize<CharacterCostumeUpdateRequest>(Request);
 
-    var res = CharacterModel.Character_CostumeUpdate(req);
+    var res = model.Character_CostumeUpdate(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Character_CostumeUpdate() {
 public async Task<IActionResult> Character_Enhance() {
     var req = await RequestSerializer.Deserialize<CharacterEnhanceRequest>(Request);
 
-    var res = CharacterModel.Character_Enhance(req);
+    var res = model.Character_Enhance(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> Character_Enhance() {
 public async Task<IActionResult> Character_Equip() {
     var req = await RequestSerializer.Deserialize<CharacterEquipRequest>(Request);
 
-    var res = CharacterModel.Character_Equip(req);
+    var res = model.Character_Equip(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> Character_Equip() {
 public async Task<IActionResult> Character_ItemPresent() {
     var req = await RequestSerializer.Deserialize<CharacterItemPresentRequest>(Request);
 
-    var res = CharacterModel.Character_ItemPresent(req);
+    var res = model.Character_ItemPresent(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> Character_ItemPresent() {
 public async Task<IActionResult> Character_LimitBreak() {
     var req = await RequestSerializer.Deserialize<CharacterLimitBreakRequest>(Request);
 
-    var res = CharacterModel.Character_LimitBreak(req);
+    var res = model.Character_LimitBreak(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -83,7 +90,7 @@ public async Task<IActionResult> Character_LimitBreak() {
 public async Task<IActionResult> Character_RankEnhance() {
     var req = await RequestSerializer.Deserialize<CharacterRankEnhanceRequest>(Request);
 
-    var res = CharacterModel.Character_RankEnhance(req);
+    var res = model.Character_RankEnhance(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -97,7 +104,7 @@ public async Task<IActionResult> Character_RankEnhance() {
 public async Task<IActionResult> Character_SkillPanelEnhance() {
     var req = await RequestSerializer.Deserialize<CharacterSkillPanelEnhanceRequest>(Request);
 
-    var res = CharacterModel.Character_SkillPanelEnhance(req);
+    var res = model.Character_SkillPanelEnhance(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -111,7 +118,7 @@ public async Task<IActionResult> Character_SkillPanelEnhance() {
 public async Task<IActionResult> Character_SkillPanelReset() {
     var req = await RequestSerializer.Deserialize<CharacterSkillPanelResetRequest>(Request);
 
-    var res = CharacterModel.Character_SkillPanelReset(req);
+    var res = model.Character_SkillPanelReset(req);
 
     if (res == null) {
         return StatusCode(500);

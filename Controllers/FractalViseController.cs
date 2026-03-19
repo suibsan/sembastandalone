@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class FractalViseController : Controller {
 
+private FractalViseModel model;
+
+public FractalViseController(ISembaWrapper wrapper) {
+    model = new FractalViseModel(wrapper);
+}
+
+
 [Route("/fractal_vise/acquire_area_item")]
 public async Task<IActionResult> FractalVise_AcquireAreaItem() {
     var req = await RequestSerializer.Deserialize<FractalViseAcquireAreaItemRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_AcquireAreaItem(req);
+    var res = model.FractalVise_AcquireAreaItem(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> FractalVise_AcquireAreaItem() {
 public async Task<IActionResult> FractalVise_BattleStart() {
     var req = await RequestSerializer.Deserialize<FractalViseBattleStartRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_BattleStart(req);
+    var res = model.FractalVise_BattleStart(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> FractalVise_BattleStart() {
 public async Task<IActionResult> FractalVise_BattleStartBossBattle() {
     var req = await RequestSerializer.Deserialize<FractalViseBattleStartBossBattleRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_BattleStartBossBattle(req);
+    var res = model.FractalVise_BattleStartBossBattle(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> FractalVise_BattleStartBossBattle() {
 public async Task<IActionResult> FractalVise_BossDifficulty() {
     var req = await RequestSerializer.Deserialize<FractalViseBossDifficultyRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_BossDifficulty(req);
+    var res = model.FractalVise_BossDifficulty(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> FractalVise_BossDifficulty() {
 public async Task<IActionResult> FractalVise_Clear() {
     var req = await RequestSerializer.Deserialize<FractalViseClearRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_Clear(req);
+    var res = model.FractalVise_Clear(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -83,7 +90,7 @@ public async Task<IActionResult> FractalVise_Clear() {
 public async Task<IActionResult> FractalVise_NextArea() {
     var req = await RequestSerializer.Deserialize<FractalViseNextAreaRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_NextArea(req);
+    var res = model.FractalVise_NextArea(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -97,7 +104,7 @@ public async Task<IActionResult> FractalVise_NextArea() {
 public async Task<IActionResult> FractalVise_Resume() {
     var req = await RequestSerializer.Deserialize<FractalViseResumeRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_Resume(req);
+    var res = model.FractalVise_Resume(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -111,7 +118,7 @@ public async Task<IActionResult> FractalVise_Resume() {
 public async Task<IActionResult> FractalVise_Retire() {
     var req = await RequestSerializer.Deserialize<FractalViseRetireRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_Retire(req);
+    var res = model.FractalVise_Retire(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -125,7 +132,7 @@ public async Task<IActionResult> FractalVise_Retire() {
 public async Task<IActionResult> FractalVise_RewardsReceive() {
     var req = await RequestSerializer.Deserialize<FractalViseRewardsReceiveRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_RewardsReceive(req);
+    var res = model.FractalVise_RewardsReceive(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -139,7 +146,7 @@ public async Task<IActionResult> FractalVise_RewardsReceive() {
 public async Task<IActionResult> FractalVise_RewardsTop() {
     var req = await RequestSerializer.Deserialize<FractalViseRewardsTopRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_RewardsTop(req);
+    var res = model.FractalVise_RewardsTop(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -153,7 +160,7 @@ public async Task<IActionResult> FractalVise_RewardsTop() {
 public async Task<IActionResult> FractalVise_Start() {
     var req = await RequestSerializer.Deserialize<FractalViseStartRequest>(Request);
 
-    var res = FractalViseModel.FractalVise_Start(req);
+    var res = model.FractalVise_Start(req);
 
     if (res == null) {
         return StatusCode(500);

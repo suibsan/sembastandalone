@@ -6,11 +6,18 @@ using sembastandalone.Utils;
 
 public class WebSessionModel {
 
-public static WebSessionTokenResponse? WebSession_Token() {
+public WebSessionTokenResponse? WebSession_Token() {
     // no request
     return WebSessionTokenResponse.Parser.ParseJson(
-        SembaWrapper.Call("/web_session/token", "")
+        sembaWrapper.Call("/web_session/token", "")
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public WebSessionModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class XbController : Controller {
 
+private XbModel model;
+
+public XbController(ISembaWrapper wrapper) {
+    model = new XbModel(wrapper);
+}
+
+
 [Route("/xb/add_command_unlock_item")]
 public async Task<IActionResult> Xb_AddCommandUnlockItem() {
     var req = await RequestSerializer.Deserialize<XbAddCommandUnlockItemRequest>(Request);
 
-    var res = XbModel.Xb_AddCommandUnlockItem(req);
+    var res = model.Xb_AddCommandUnlockItem(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Xb_AddCommandUnlockItem() {
 public void Xb_ForceRetire() {
     // no request
 
-    XbModel.Xb_ForceRetire();
+    model.Xb_ForceRetire();
 
     // no response
 }
@@ -37,7 +44,7 @@ public void Xb_ForceRetire() {
 public async Task<IActionResult> Xb_Formation() {
     var req = await RequestSerializer.Deserialize<XbFormationRequest>(Request);
 
-    var res = XbModel.Xb_Formation(req);
+    var res = model.Xb_Formation(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -51,7 +58,7 @@ public async Task<IActionResult> Xb_Formation() {
 public async Task<IActionResult> Xb_FormationUpdate() {
     var req = await RequestSerializer.Deserialize<XbFormationUpdateRequest>(Request);
 
-    var res = XbModel.Xb_FormationUpdate(req);
+    var res = model.Xb_FormationUpdate(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -65,7 +72,7 @@ public async Task<IActionResult> Xb_FormationUpdate() {
 public async Task<IActionResult> Xb_Play() {
     var req = await RequestSerializer.Deserialize<XbPlayRequest>(Request);
 
-    var res = XbModel.Xb_Play(req);
+    var res = model.Xb_Play(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -79,7 +86,7 @@ public async Task<IActionResult> Xb_Play() {
 public IActionResult Xb_Retire() {
     // no request
 
-    var res = XbModel.Xb_Retire();
+    var res = model.Xb_Retire();
 
     if (res == null) {
         return StatusCode(500);
@@ -93,7 +100,7 @@ public IActionResult Xb_Retire() {
 public async Task<IActionResult> Xb_Start() {
     var req = await RequestSerializer.Deserialize<XbStartRequest>(Request);
 
-    var res = XbModel.Xb_Start(req);
+    var res = model.Xb_Start(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -107,7 +114,7 @@ public async Task<IActionResult> Xb_Start() {
 public async Task<IActionResult> Xb_Status() {
     var req = await RequestSerializer.Deserialize<XbStatusRequest>(Request);
 
-    var res = XbModel.Xb_Status(req);
+    var res = model.Xb_Status(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -121,7 +128,7 @@ public async Task<IActionResult> Xb_Status() {
 public async Task<IActionResult> Xb_UpdateSkillOrbStatus() {
     var req = await RequestSerializer.Deserialize<XbUpdateSkillOrbStatusRequest>(Request);
 
-    var res = XbModel.Xb_UpdateSkillOrbStatus(req);
+    var res = model.Xb_UpdateSkillOrbStatus(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -135,7 +142,7 @@ public async Task<IActionResult> Xb_UpdateSkillOrbStatus() {
 public async Task<IActionResult> Xb_UpdateTension() {
     var req = await RequestSerializer.Deserialize<XbUpdateTensionRequest>(Request);
 
-    var res = XbModel.Xb_UpdateTension(req);
+    var res = model.Xb_UpdateTension(req);
 
     if (res == null) {
         return StatusCode(500);

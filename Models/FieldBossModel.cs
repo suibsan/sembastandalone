@@ -6,11 +6,18 @@ using sembastandalone.Utils;
 
 public class FieldBossModel {
 
-public static FieldBossEntryResponse? FieldBoss_Entry(FieldBossEntryRequest req) {
+public FieldBossEntryResponse? FieldBoss_Entry(FieldBossEntryRequest req) {
     Console.WriteLine($"FieldBoss_Entry: {req}");
     return FieldBossEntryResponse.Parser.ParseJson(
-        SembaWrapper.Call("/field_boss/entry", req.ToString())
+        sembaWrapper.Call("/field_boss/entry", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public FieldBossModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

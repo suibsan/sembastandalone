@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class AdventureController : Controller {
 
+private AdventureModel model;
+
+public AdventureController(ISembaWrapper wrapper) {
+    model = new AdventureModel(wrapper);
+}
+
+
 [Route("/adventure/access_warp_point")]
 public async Task<IActionResult> Adventure_AccessWarpPoint() {
     var req = await RequestSerializer.Deserialize<AdventureAccessWarpPointRequest>(Request);
 
-    var res = AdventureModel.Adventure_AccessWarpPoint(req);
+    var res = model.Adventure_AccessWarpPoint(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Adventure_AccessWarpPoint() {
 public async Task<IActionResult> Adventure_AcquireAreaItem() {
     var req = await RequestSerializer.Deserialize<AdventureAcquireAreaItemRequest>(Request);
 
-    var res = AdventureModel.Adventure_AcquireAreaItem(req);
+    var res = model.Adventure_AcquireAreaItem(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> Adventure_AcquireAreaItem() {
 public async Task<IActionResult> Adventure_AreaObject() {
     var req = await RequestSerializer.Deserialize<AdventureAreaObjectRequest>(Request);
 
-    var res = AdventureModel.Adventure_AreaObject(req);
+    var res = model.Adventure_AreaObject(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> Adventure_AreaObject() {
 public async Task<IActionResult> Adventure_FindGraffiti() {
     var req = await RequestSerializer.Deserialize<AdventureFindGraffitiRequest>(Request);
 
-    var res = AdventureModel.Adventure_FindGraffiti(req);
+    var res = model.Adventure_FindGraffiti(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> Adventure_FindGraffiti() {
 public async Task<IActionResult> Adventure_Hospital() {
     var req = await RequestSerializer.Deserialize<AdventureHospitalRequest>(Request);
 
-    var res = AdventureModel.Adventure_Hospital(req);
+    var res = model.Adventure_Hospital(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -83,7 +90,7 @@ public async Task<IActionResult> Adventure_Hospital() {
 public async Task<IActionResult> Adventure_MoveToArea() {
     var req = await RequestSerializer.Deserialize<AdventureMoveToAreaRequest>(Request);
 
-    var res = AdventureModel.Adventure_MoveToArea(req);
+    var res = model.Adventure_MoveToArea(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -97,7 +104,7 @@ public async Task<IActionResult> Adventure_MoveToArea() {
 public async Task<IActionResult> Adventure_ReadSequence() {
     var req = await RequestSerializer.Deserialize<AdventureReadSequenceRequest>(Request);
 
-    var res = AdventureModel.Adventure_ReadSequence(req);
+    var res = model.Adventure_ReadSequence(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -111,7 +118,7 @@ public async Task<IActionResult> Adventure_ReadSequence() {
 public async Task<IActionResult> Adventure_ReleaseEventLift() {
     var req = await RequestSerializer.Deserialize<AdventureReleaseEventLiftRequest>(Request);
 
-    var res = AdventureModel.Adventure_ReleaseEventLift(req);
+    var res = model.Adventure_ReleaseEventLift(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -125,7 +132,7 @@ public async Task<IActionResult> Adventure_ReleaseEventLift() {
 public async Task<IActionResult> Adventure_TrackTarget() {
     var req = await RequestSerializer.Deserialize<AdventureTrackTargetRequest>(Request);
 
-    var res = AdventureModel.Adventure_TrackTarget(req);
+    var res = model.Adventure_TrackTarget(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -139,7 +146,7 @@ public async Task<IActionResult> Adventure_TrackTarget() {
 public async Task<IActionResult> Adventure_UpdateCharacterStatus() {
     var req = await RequestSerializer.Deserialize<AdventureUpdateCharacterStatusRequest>(Request);
 
-    var res = AdventureModel.Adventure_UpdateCharacterStatus(req);
+    var res = model.Adventure_UpdateCharacterStatus(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -153,7 +160,7 @@ public async Task<IActionResult> Adventure_UpdateCharacterStatus() {
 public async Task<IActionResult> Adventure_WarpAreaLocator() {
     var req = await RequestSerializer.Deserialize<AdventureWarpAreaLocatorRequest>(Request);
 
-    var res = AdventureModel.Adventure_WarpAreaLocator(req);
+    var res = model.Adventure_WarpAreaLocator(req);
 
     if (res == null) {
         return StatusCode(500);

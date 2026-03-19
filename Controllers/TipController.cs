@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class TipController : Controller {
 
+private TipModel model;
+
+public TipController(ISembaWrapper wrapper) {
+    model = new TipModel(wrapper);
+}
+
+
 [Route("/tip/release")]
 public async Task<IActionResult> Tip_Release() {
     var req = await RequestSerializer.Deserialize<TipReleaseRequest>(Request);
 
-    var res = TipModel.Tip_Release(req);
+    var res = model.Tip_Release(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Tip_Release() {
 public async Task<IActionResult> Tip_ReleaseByBattle() {
     var req = await RequestSerializer.Deserialize<TipReleaseByBattleRequest>(Request);
 
-    var res = TipModel.Tip_ReleaseByBattle(req);
+    var res = model.Tip_ReleaseByBattle(req);
 
     if (res == null) {
         return StatusCode(500);

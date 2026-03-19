@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class RefundApplicationController : Controller {
 
+private RefundApplicationModel model;
+
+public RefundApplicationController(ISembaWrapper wrapper) {
+    model = new RefundApplicationModel(wrapper);
+}
+
+
 [Route("/refund_application/get")]
 public IActionResult RefundApplication_Get() {
     // no request
 
-    var res = RefundApplicationModel.RefundApplication_Get();
+    var res = model.RefundApplication_Get();
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public IActionResult RefundApplication_Get() {
 public async Task<IActionResult> RefundApplication_RequestRefund() {
     var req = await RequestSerializer.Deserialize<RefundApplicationRequestRefundRequest>(Request);
 
-    var res = RefundApplicationModel.RefundApplication_RequestRefund(req);
+    var res = model.RefundApplication_RequestRefund(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> RefundApplication_RequestRefund() {
 public IActionResult RefundApplication_SendVerificationCode() {
     // no request
 
-    var res = RefundApplicationModel.RefundApplication_SendVerificationCode();
+    var res = model.RefundApplication_SendVerificationCode();
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public IActionResult RefundApplication_SendVerificationCode() {
 public async Task<IActionResult> RefundApplication_UpdateEmailId() {
     var req = await RequestSerializer.Deserialize<RefundApplicationUpdateEmailIdRequest>(Request);
 
-    var res = RefundApplicationModel.RefundApplication_UpdateEmailId(req);
+    var res = model.RefundApplication_UpdateEmailId(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> RefundApplication_UpdateEmailId() {
 public async Task<IActionResult> RefundApplication_VerifyEmailId() {
     var req = await RequestSerializer.Deserialize<RefundApplicationVerifyEmailIdRequest>(Request);
 
-    var res = RefundApplicationModel.RefundApplication_VerifyEmailId(req);
+    var res = model.RefundApplication_VerifyEmailId(req);
 
     if (res == null) {
         return StatusCode(500);

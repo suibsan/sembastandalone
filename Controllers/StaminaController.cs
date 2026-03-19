@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class StaminaController : Controller {
 
+private StaminaModel model;
+
+public StaminaController(ISembaWrapper wrapper) {
+    model = new StaminaModel(wrapper);
+}
+
+
 [Route("/stamina/purchase")]
 public async Task<IActionResult> Stamina_Purchase() {
     var req = await RequestSerializer.Deserialize<StaminaPurchaseRequest>(Request);
 
-    var res = StaminaModel.Stamina_Purchase(req);
+    var res = model.Stamina_Purchase(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Stamina_Purchase() {
 public async Task<IActionResult> Stamina_UseItem() {
     var req = await RequestSerializer.Deserialize<StaminaUseItemRequest>(Request);
 
-    var res = StaminaModel.Stamina_UseItem(req);
+    var res = model.Stamina_UseItem(req);
 
     if (res == null) {
         return StatusCode(500);

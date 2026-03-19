@@ -6,11 +6,18 @@ using sembastandalone.Utils;
 
 public class DishModel {
 
-public static ChangedResourcesResponse? Dish_Order(DishOrderRequest req) {
+public ChangedResourcesResponse? Dish_Order(DishOrderRequest req) {
     Console.WriteLine($"Dish_Order: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/dish/order", req.ToString())
+        sembaWrapper.Call("/dish/order", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public DishModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

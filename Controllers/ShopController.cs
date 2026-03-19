@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class ShopController : Controller {
 
+private ShopModel model;
+
+public ShopController(ISembaWrapper wrapper) {
+    model = new ShopModel(wrapper);
+}
+
+
 [Route("/shop/cycle_update_shop_purchase")]
 public async Task<IActionResult> Shop_CycleUpdateShopPurchase() {
     var req = await RequestSerializer.Deserialize<ShopCycleUpdateShopPurchaseRequest>(Request);
 
-    var res = ShopModel.Shop_CycleUpdateShopPurchase(req);
+    var res = model.Shop_CycleUpdateShopPurchase(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Shop_CycleUpdateShopPurchase() {
 public async Task<IActionResult> Shop_CycleUpdateShopRelease() {
     var req = await RequestSerializer.Deserialize<ShopCycleUpdateShopReleaseRequest>(Request);
 
-    var res = ShopModel.Shop_CycleUpdateShopRelease(req);
+    var res = model.Shop_CycleUpdateShopRelease(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> Shop_CycleUpdateShopRelease() {
 public async Task<IActionResult> Shop_GearShopList() {
     var req = await RequestSerializer.Deserialize<ShopGearShopListRequest>(Request);
 
-    var res = ShopModel.Shop_GearShopList(req);
+    var res = model.Shop_GearShopList(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> Shop_GearShopList() {
 public async Task<IActionResult> Shop_GearShopPurchase() {
     var req = await RequestSerializer.Deserialize<ShopGearShopPurchaseRequest>(Request);
 
-    var res = ShopModel.Shop_GearShopPurchase(req);
+    var res = model.Shop_GearShopPurchase(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> Shop_GearShopPurchase() {
 public IActionResult Shop_GemList() {
     // no request
 
-    var res = ShopModel.Shop_GemList();
+    var res = model.Shop_GemList();
 
     if (res == null) {
         return StatusCode(500);
@@ -83,7 +90,7 @@ public IActionResult Shop_GemList() {
 public async Task<IActionResult> Shop_Purchase() {
     var req = await RequestSerializer.Deserialize<ShopPurchaseRequest>(Request);
 
-    var res = ShopModel.Shop_Purchase(req);
+    var res = model.Shop_Purchase(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -97,7 +104,7 @@ public async Task<IActionResult> Shop_Purchase() {
 public async Task<IActionResult> Shop_RandomCostumeList() {
     var req = await RequestSerializer.Deserialize<ShopRandomCostumeListRequest>(Request);
 
-    var res = ShopModel.Shop_RandomCostumeList(req);
+    var res = model.Shop_RandomCostumeList(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -111,7 +118,7 @@ public async Task<IActionResult> Shop_RandomCostumeList() {
 public async Task<IActionResult> Shop_RandomCostumePurchase() {
     var req = await RequestSerializer.Deserialize<ShopRandomCostumePurchaseRequest>(Request);
 
-    var res = ShopModel.Shop_RandomCostumePurchase(req);
+    var res = model.Shop_RandomCostumePurchase(req);
 
     if (res == null) {
         return StatusCode(500);

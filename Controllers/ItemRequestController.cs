@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class ItemRequestController : Controller {
 
+private ItemRequestModel model;
+
+public ItemRequestController(ISembaWrapper wrapper) {
+    model = new ItemRequestModel(wrapper);
+}
+
+
 [Route("/item_request/cancel")]
 public void ItemRequest_Cancel() {
     // no request
 
-    ItemRequestModel.ItemRequest_Cancel();
+    model.ItemRequest_Cancel();
 
     // no response
 }
@@ -23,7 +30,7 @@ public void ItemRequest_Cancel() {
 public IActionResult ItemRequest_Collect() {
     // no request
 
-    var res = ItemRequestModel.ItemRequest_Collect();
+    var res = model.ItemRequest_Collect();
 
     if (res == null) {
         return StatusCode(500);
@@ -37,7 +44,7 @@ public IActionResult ItemRequest_Collect() {
 public async Task<IActionResult> ItemRequest_Fulfill() {
     var req = await RequestSerializer.Deserialize<ItemRequestFulfillRequest>(Request);
 
-    var res = ItemRequestModel.ItemRequest_Fulfill(req);
+    var res = model.ItemRequest_Fulfill(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -51,7 +58,7 @@ public async Task<IActionResult> ItemRequest_Fulfill() {
 public IActionResult ItemRequest_Get() {
     // no request
 
-    var res = ItemRequestModel.ItemRequest_Get();
+    var res = model.ItemRequest_Get();
 
     if (res == null) {
         return StatusCode(500);
@@ -65,7 +72,7 @@ public IActionResult ItemRequest_Get() {
 public IActionResult ItemRequest_List() {
     // no request
 
-    var res = ItemRequestModel.ItemRequest_List();
+    var res = model.ItemRequest_List();
 
     if (res == null) {
         return StatusCode(500);
@@ -79,7 +86,7 @@ public IActionResult ItemRequest_List() {
 public async Task<IActionResult> ItemRequest_Publish() {
     var req = await RequestSerializer.Deserialize<ItemRequestPublishRequest>(Request);
 
-    var res = ItemRequestModel.ItemRequest_Publish(req);
+    var res = model.ItemRequest_Publish(req);
 
     if (res == null) {
         return StatusCode(500);

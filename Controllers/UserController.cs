@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class UserController : Controller {
 
+private UserModel model;
+
+public UserController(ISembaWrapper wrapper) {
+    model = new UserModel(wrapper);
+}
+
+
 [Route("/user/cross_date")]
 public IActionResult User_CrossDate() {
     // no request
 
-    var res = UserModel.User_CrossDate();
+    var res = model.User_CrossDate();
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public IActionResult User_CrossDate() {
 public IActionResult User_Delete() {
     // no request
 
-    var res = UserModel.User_Delete();
+    var res = model.User_Delete();
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public IActionResult User_Delete() {
 public async Task<IActionResult> User_LinkApple() {
     var req = await RequestSerializer.Deserialize<UserLinkAppleRequest>(Request);
 
-    var res = UserModel.User_LinkApple(req);
+    var res = model.User_LinkApple(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> User_LinkApple() {
 public async Task<IActionResult> User_LinkGoogle() {
     var req = await RequestSerializer.Deserialize<UserLinkGoogleRequest>(Request);
 
-    var res = UserModel.User_LinkGoogle(req);
+    var res = model.User_LinkGoogle(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> User_LinkGoogle() {
 public IActionResult User_LinksList() {
     // no request
 
-    var res = UserModel.User_LinksList();
+    var res = model.User_LinksList();
 
     if (res == null) {
         return StatusCode(500);
@@ -83,7 +90,7 @@ public IActionResult User_LinksList() {
 public IActionResult User_LogIn() {
     // no request
 
-    var res = UserModel.User_LogIn();
+    var res = model.User_LogIn();
 
     if (res == null) {
         return StatusCode(500);
@@ -97,7 +104,7 @@ public IActionResult User_LogIn() {
 public IActionResult User_Notification() {
     // no request
 
-    var res = UserModel.User_Notification();
+    var res = model.User_Notification();
 
     if (res == null) {
         return StatusCode(500);
@@ -111,7 +118,7 @@ public IActionResult User_Notification() {
 public void User_UnlinkApple() {
     // no request
 
-    UserModel.User_UnlinkApple();
+    model.User_UnlinkApple();
 
     // no response
 }
@@ -121,7 +128,7 @@ public void User_UnlinkApple() {
 public void User_UnlinkGoogle() {
     // no request
 
-    UserModel.User_UnlinkGoogle();
+    model.User_UnlinkGoogle();
 
     // no response
 }
@@ -131,7 +138,7 @@ public void User_UnlinkGoogle() {
 public void User_UnlinkSteam() {
     // no request
 
-    UserModel.User_UnlinkSteam();
+    model.User_UnlinkSteam();
 
     // no response
 }
@@ -141,7 +148,7 @@ public void User_UnlinkSteam() {
 public async Task<IActionResult> User_UpdateBirthdate() {
     var req = await RequestSerializer.Deserialize<UserUpdateBirthdateRequest>(Request);
 
-    var res = UserModel.User_UpdateBirthdate(req);
+    var res = model.User_UpdateBirthdate(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -155,7 +162,7 @@ public async Task<IActionResult> User_UpdateBirthdate() {
 public async Task User_UpdateLanguage() {
     var req = await RequestSerializer.Deserialize<UserUpdateLanguageRequest>(Request);
 
-    UserModel.User_UpdateLanguage(req);
+    model.User_UpdateLanguage(req);
 
     // no response
 }

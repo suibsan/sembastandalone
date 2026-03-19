@@ -6,19 +6,26 @@ using sembastandalone.Utils;
 
 public class TipModel {
 
-public static TipReleaseResponse? Tip_Release(TipReleaseRequest req) {
+public TipReleaseResponse? Tip_Release(TipReleaseRequest req) {
     Console.WriteLine($"Tip_Release: {req}");
     return TipReleaseResponse.Parser.ParseJson(
-        SembaWrapper.Call("/tip/release", req.ToString())
+        sembaWrapper.Call("/tip/release", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? Tip_ReleaseByBattle(TipReleaseByBattleRequest req) {
+public ChangedResourcesResponse? Tip_ReleaseByBattle(TipReleaseByBattleRequest req) {
     Console.WriteLine($"Tip_ReleaseByBattle: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/tip/release_by_battle", req.ToString())
+        sembaWrapper.Call("/tip/release_by_battle", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public TipModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

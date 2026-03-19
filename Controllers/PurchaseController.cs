@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class PurchaseController : Controller {
 
+private PurchaseModel model;
+
+public PurchaseController(ISembaWrapper wrapper) {
+    model = new PurchaseModel(wrapper);
+}
+
+
 [Route("/purchase/history")]
 public IActionResult Purchase_History() {
     // no request
 
-    var res = PurchaseModel.Purchase_History();
+    var res = model.Purchase_History();
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public IActionResult Purchase_History() {
 public async Task Purchase_SessionPublish() {
     var req = await RequestSerializer.Deserialize<PurchaseSessionPublishRequest>(Request);
 
-    PurchaseModel.Purchase_SessionPublish(req);
+    model.Purchase_SessionPublish(req);
 
     // no response
 }
@@ -37,7 +44,7 @@ public async Task Purchase_SessionPublish() {
 public async Task<IActionResult> Purchase_SessionStart() {
     var req = await RequestSerializer.Deserialize<PurchaseSessionStartRequest>(Request);
 
-    var res = PurchaseModel.Purchase_SessionStart(req);
+    var res = model.Purchase_SessionStart(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -51,7 +58,7 @@ public async Task<IActionResult> Purchase_SessionStart() {
 public async Task<IActionResult> Purchase_Verify() {
     var req = await RequestSerializer.Deserialize<PurchaseVerifyRequest>(Request);
 
-    var res = PurchaseModel.Purchase_Verify(req);
+    var res = model.Purchase_Verify(req);
 
     if (res == null) {
         return StatusCode(500);

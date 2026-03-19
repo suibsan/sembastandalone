@@ -6,19 +6,26 @@ using sembastandalone.Utils;
 
 public class LoginBonusModel {
 
-public static ChangedResourcesResponse? LoginBonus_List() {
+public ChangedResourcesResponse? LoginBonus_List() {
     // no request
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/login_bonus/list", "")
+        sembaWrapper.Call("/login_bonus/list", "")
     );
 }
 
 
-public static LoginBonusReceiveResponse? LoginBonus_Receive(LoginBonusReceiveRequest req) {
+public LoginBonusReceiveResponse? LoginBonus_Receive(LoginBonusReceiveRequest req) {
     Console.WriteLine($"LoginBonus_Receive: {req}");
     return LoginBonusReceiveResponse.Parser.ParseJson(
-        SembaWrapper.Call("/login_bonus/receive", req.ToString())
+        sembaWrapper.Call("/login_bonus/receive", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public LoginBonusModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

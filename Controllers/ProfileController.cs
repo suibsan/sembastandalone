@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class ProfileController : Controller {
 
+private ProfileModel model;
+
+public ProfileController(ISembaWrapper wrapper) {
+    model = new ProfileModel(wrapper);
+}
+
+
 [Route("/profile/update_badges")]
 public async Task<IActionResult> Profile_UpdateBadges() {
     var req = await RequestSerializer.Deserialize<ProfileUpdateBadgesRequest>(Request);
 
-    var res = ProfileModel.Profile_UpdateBadges(req);
+    var res = model.Profile_UpdateBadges(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Profile_UpdateBadges() {
 public async Task<IActionResult> Profile_UpdateBanner() {
     var req = await RequestSerializer.Deserialize<ProfileUpdateBannerRequest>(Request);
 
-    var res = ProfileModel.Profile_UpdateBanner(req);
+    var res = model.Profile_UpdateBanner(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> Profile_UpdateBanner() {
 public async Task<IActionResult> Profile_UpdateCharacterLikabilityScale() {
     var req = await RequestSerializer.Deserialize<ProfileUpdateCharacterLikabilityScaleRequest>(Request);
 
-    var res = ProfileModel.Profile_UpdateCharacterLikabilityScale(req);
+    var res = model.Profile_UpdateCharacterLikabilityScale(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> Profile_UpdateCharacterLikabilityScale() {
 public async Task<IActionResult> Profile_UpdateName() {
     var req = await RequestSerializer.Deserialize<ProfileUpdateNameRequest>(Request);
 
-    var res = ProfileModel.Profile_UpdateName(req);
+    var res = model.Profile_UpdateName(req);
 
     if (res == null) {
         return StatusCode(500);

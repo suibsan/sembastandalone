@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class XbPvpController : Controller {
 
+private XbPvpModel model;
+
+public XbPvpController(ISembaWrapper wrapper) {
+    model = new XbPvpModel(wrapper);
+}
+
+
 [Route("/xb_pvp/casual_matching")]
 public async Task<IActionResult> XbPvp_CasualMatching() {
     var req = await RequestSerializer.Deserialize<XbPvpCasualMatchingRequest>(Request);
 
-    var res = XbPvpModel.XbPvp_CasualMatching(req);
+    var res = model.XbPvp_CasualMatching(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> XbPvp_CasualMatching() {
 public IActionResult XbPvp_Entry() {
     // no request
 
-    var res = XbPvpModel.XbPvp_Entry();
+    var res = model.XbPvp_Entry();
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public IActionResult XbPvp_Entry() {
 public IActionResult XbPvp_Formation() {
     // no request
 
-    var res = XbPvpModel.XbPvp_Formation();
+    var res = model.XbPvp_Formation();
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public IActionResult XbPvp_Formation() {
 public async Task<IActionResult> XbPvp_FormationUpdate() {
     var req = await RequestSerializer.Deserialize<XbPvpFormationUpdateRequest>(Request);
 
-    var res = XbPvpModel.XbPvp_FormationUpdate(req);
+    var res = model.XbPvp_FormationUpdate(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> XbPvp_FormationUpdate() {
 public IActionResult XbPvp_QuickMatching() {
     // no request
 
-    var res = XbPvpModel.XbPvp_QuickMatching();
+    var res = model.XbPvp_QuickMatching();
 
     if (res == null) {
         return StatusCode(500);
@@ -83,7 +90,7 @@ public IActionResult XbPvp_QuickMatching() {
 public async Task<IActionResult> XbPvp_RankMatchHistoryList() {
     var req = await RequestSerializer.Deserialize<XbPvpRankMatchHistoryListRequest>(Request);
 
-    var res = XbPvpModel.XbPvp_RankMatchHistoryList(req);
+    var res = model.XbPvp_RankMatchHistoryList(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -97,7 +104,7 @@ public async Task<IActionResult> XbPvp_RankMatchHistoryList() {
 public IActionResult XbPvp_RankMatching() {
     // no request
 
-    var res = XbPvpModel.XbPvp_RankMatching();
+    var res = model.XbPvp_RankMatching();
 
     if (res == null) {
         return StatusCode(500);

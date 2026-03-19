@@ -6,11 +6,18 @@ using sembastandalone.Utils;
 
 public class SubsystemModel {
 
-public static SubsystemStatusResponse? Subsystem_Status() {
+public SubsystemStatusResponse? Subsystem_Status() {
     // no request
     return SubsystemStatusResponse.Parser.ParseJson(
-        SembaWrapper.Call("/subsystem/status", "")
+        sembaWrapper.Call("/subsystem/status", "")
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public SubsystemModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

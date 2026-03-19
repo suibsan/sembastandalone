@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class ItemController : Controller {
 
+private ItemModel model;
+
+public ItemController(ISembaWrapper wrapper) {
+    model = new ItemModel(wrapper);
+}
+
+
 [Route("/item/exchange")]
 public async Task<IActionResult> Item_Exchange() {
     var req = await RequestSerializer.Deserialize<ItemExchangeRequest>(Request);
 
-    var res = ItemModel.Item_Exchange(req);
+    var res = model.Item_Exchange(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Item_Exchange() {
 public async Task<IActionResult> Item_OpenSelectBox() {
     var req = await RequestSerializer.Deserialize<ItemOpenSelectBoxRequest>(Request);
 
-    var res = ItemModel.Item_OpenSelectBox(req);
+    var res = model.Item_OpenSelectBox(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> Item_OpenSelectBox() {
 public async Task<IActionResult> Item_Sell() {
     var req = await RequestSerializer.Deserialize<ItemSellRequest>(Request);
 
-    var res = ItemModel.Item_Sell(req);
+    var res = model.Item_Sell(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> Item_Sell() {
 public async Task<IActionResult> Item_Synthesize() {
     var req = await RequestSerializer.Deserialize<ItemSynthesizeRequest>(Request);
 
-    var res = ItemModel.Item_Synthesize(req);
+    var res = model.Item_Synthesize(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> Item_Synthesize() {
 public async Task<IActionResult> Item_UseSupply() {
     var req = await RequestSerializer.Deserialize<ItemUseSupplyRequest>(Request);
 
-    var res = ItemModel.Item_UseSupply(req);
+    var res = model.Item_UseSupply(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -83,7 +90,7 @@ public async Task<IActionResult> Item_UseSupply() {
 public async Task<IActionResult> Item_UseSupplyGearEffect() {
     var req = await RequestSerializer.Deserialize<ItemUseSupplyGearEffectRequest>(Request);
 
-    var res = ItemModel.Item_UseSupplyGearEffect(req);
+    var res = model.Item_UseSupplyGearEffect(req);
 
     if (res == null) {
         return StatusCode(500);

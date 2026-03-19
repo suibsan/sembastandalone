@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class GachaController : Controller {
 
+private GachaModel model;
+
+public GachaController(ISembaWrapper wrapper) {
+    model = new GachaModel(wrapper);
+}
+
+
 [Route("/gacha/execute")]
 public async Task<IActionResult> Gacha_Execute() {
     var req = await RequestSerializer.Deserialize<GachaExecuteRequest>(Request);
 
-    var res = GachaModel.Gacha_Execute(req);
+    var res = model.Gacha_Execute(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Gacha_Execute() {
 public IActionResult Gacha_List() {
     // no request
 
-    var res = GachaModel.Gacha_List();
+    var res = model.Gacha_List();
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public IActionResult Gacha_List() {
 public async Task<IActionResult> Gacha_Select() {
     var req = await RequestSerializer.Deserialize<GachaSelectRequest>(Request);
 
-    var res = GachaModel.Gacha_Select(req);
+    var res = model.Gacha_Select(req);
 
     if (res == null) {
         return StatusCode(500);

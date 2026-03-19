@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class FieldBossController : Controller {
 
+private FieldBossModel model;
+
+public FieldBossController(ISembaWrapper wrapper) {
+    model = new FieldBossModel(wrapper);
+}
+
+
 [Route("/field_boss/entry")]
 public async Task<IActionResult> FieldBoss_Entry() {
     var req = await RequestSerializer.Deserialize<FieldBossEntryRequest>(Request);
 
-    var res = FieldBossModel.FieldBoss_Entry(req);
+    var res = model.FieldBoss_Entry(req);
 
     if (res == null) {
         return StatusCode(500);

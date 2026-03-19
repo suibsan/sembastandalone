@@ -6,11 +6,18 @@ using sembastandalone.Utils;
 
 public class TutorialModel {
 
-public static TutorialSkipResponse? Tutorial_Skip() {
+public TutorialSkipResponse? Tutorial_Skip() {
     // no request
     return TutorialSkipResponse.Parser.ParseJson(
-        SembaWrapper.Call("/tutorial/skip", "")
+        sembaWrapper.Call("/tutorial/skip", "")
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public TutorialModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

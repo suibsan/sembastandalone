@@ -6,19 +6,26 @@ using sembastandalone.Utils;
 
 public class MissionModel {
 
-public static MissionCountRewardReceiveResponse? Mission_CountRewardReceive(MissionCountRewardReceiveRequest req) {
+public MissionCountRewardReceiveResponse? Mission_CountRewardReceive(MissionCountRewardReceiveRequest req) {
     Console.WriteLine($"Mission_CountRewardReceive: {req}");
     return MissionCountRewardReceiveResponse.Parser.ParseJson(
-        SembaWrapper.Call("/mission/count_reward_receive", req.ToString())
+        sembaWrapper.Call("/mission/count_reward_receive", req.ToString())
     );
 }
 
 
-public static MissionReceiveResponse? Mission_Receive(MissionReceiveRequest req) {
+public MissionReceiveResponse? Mission_Receive(MissionReceiveRequest req) {
     Console.WriteLine($"Mission_Receive: {req}");
     return MissionReceiveResponse.Parser.ParseJson(
-        SembaWrapper.Call("/mission/receive", req.ToString())
+        sembaWrapper.Call("/mission/receive", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public MissionModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

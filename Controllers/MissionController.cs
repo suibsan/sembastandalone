@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class MissionController : Controller {
 
+private MissionModel model;
+
+public MissionController(ISembaWrapper wrapper) {
+    model = new MissionModel(wrapper);
+}
+
+
 [Route("/mission/count_reward_receive")]
 public async Task<IActionResult> Mission_CountRewardReceive() {
     var req = await RequestSerializer.Deserialize<MissionCountRewardReceiveRequest>(Request);
 
-    var res = MissionModel.Mission_CountRewardReceive(req);
+    var res = model.Mission_CountRewardReceive(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Mission_CountRewardReceive() {
 public async Task<IActionResult> Mission_Receive() {
     var req = await RequestSerializer.Deserialize<MissionReceiveRequest>(Request);
 
-    var res = MissionModel.Mission_Receive(req);
+    var res = model.Mission_Receive(req);
 
     if (res == null) {
         return StatusCode(500);

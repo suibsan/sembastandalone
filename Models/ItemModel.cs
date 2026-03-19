@@ -6,51 +6,58 @@ using sembastandalone.Utils;
 
 public class ItemModel {
 
-public static ChangedResourcesResponse? Item_Exchange(ItemExchangeRequest req) {
+public ChangedResourcesResponse? Item_Exchange(ItemExchangeRequest req) {
     Console.WriteLine($"Item_Exchange: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/item/exchange", req.ToString())
+        sembaWrapper.Call("/item/exchange", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? Item_OpenSelectBox(ItemOpenSelectBoxRequest req) {
+public ChangedResourcesResponse? Item_OpenSelectBox(ItemOpenSelectBoxRequest req) {
     Console.WriteLine($"Item_OpenSelectBox: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/item/open_select_box", req.ToString())
+        sembaWrapper.Call("/item/open_select_box", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? Item_Sell(ItemSellRequest req) {
+public ChangedResourcesResponse? Item_Sell(ItemSellRequest req) {
     Console.WriteLine($"Item_Sell: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/item/sell", req.ToString())
+        sembaWrapper.Call("/item/sell", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? Item_Synthesize(ItemSynthesizeRequest req) {
+public ChangedResourcesResponse? Item_Synthesize(ItemSynthesizeRequest req) {
     Console.WriteLine($"Item_Synthesize: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/item/synthesize", req.ToString())
+        sembaWrapper.Call("/item/synthesize", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? Item_UseSupply(ItemUseSupplyRequest req) {
+public ChangedResourcesResponse? Item_UseSupply(ItemUseSupplyRequest req) {
     Console.WriteLine($"Item_UseSupply: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/item/use_supply", req.ToString())
+        sembaWrapper.Call("/item/use_supply", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? Item_UseSupplyGearEffect(ItemUseSupplyGearEffectRequest req) {
+public ChangedResourcesResponse? Item_UseSupplyGearEffect(ItemUseSupplyGearEffectRequest req) {
     Console.WriteLine($"Item_UseSupplyGearEffect: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/item/use_supply_gear_effect", req.ToString())
+        sembaWrapper.Call("/item/use_supply_gear_effect", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public ItemModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

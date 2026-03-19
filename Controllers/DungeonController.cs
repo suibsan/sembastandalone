@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class DungeonController : Controller {
 
+private DungeonModel model;
+
+public DungeonController(ISembaWrapper wrapper) {
+    model = new DungeonModel(wrapper);
+}
+
+
 [Route("/dungeon/acquire_area_item")]
 public async Task<IActionResult> Dungeon_AcquireAreaItem() {
     var req = await RequestSerializer.Deserialize<DungeonAcquireAreaItemRequest>(Request);
 
-    var res = DungeonModel.Dungeon_AcquireAreaItem(req);
+    var res = model.Dungeon_AcquireAreaItem(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Dungeon_AcquireAreaItem() {
 public async Task<IActionResult> Dungeon_BattleSkip() {
     var req = await RequestSerializer.Deserialize<DungeonBattleSkipRequest>(Request);
 
-    var res = DungeonModel.Dungeon_BattleSkip(req);
+    var res = model.Dungeon_BattleSkip(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> Dungeon_BattleSkip() {
 public async Task<IActionResult> Dungeon_BattleStart() {
     var req = await RequestSerializer.Deserialize<DungeonBattleStartRequest>(Request);
 
-    var res = DungeonModel.Dungeon_BattleStart(req);
+    var res = model.Dungeon_BattleStart(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> Dungeon_BattleStart() {
 public async Task<IActionResult> Dungeon_Entry() {
     var req = await RequestSerializer.Deserialize<DungeonEntryRequest>(Request);
 
-    var res = DungeonModel.Dungeon_Entry(req);
+    var res = model.Dungeon_Entry(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> Dungeon_Entry() {
 public async Task<IActionResult> Dungeon_Finish() {
     var req = await RequestSerializer.Deserialize<DungeonFinishRequest>(Request);
 
-    var res = DungeonModel.Dungeon_Finish(req);
+    var res = model.Dungeon_Finish(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -83,7 +90,7 @@ public async Task<IActionResult> Dungeon_Finish() {
 public async Task<IActionResult> Dungeon_Resume() {
     var req = await RequestSerializer.Deserialize<DungeonResumeRequest>(Request);
 
-    var res = DungeonModel.Dungeon_Resume(req);
+    var res = model.Dungeon_Resume(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -97,7 +104,7 @@ public async Task<IActionResult> Dungeon_Resume() {
 public async Task<IActionResult> Dungeon_Start() {
     var req = await RequestSerializer.Deserialize<DungeonStartRequest>(Request);
 
-    var res = DungeonModel.Dungeon_Start(req);
+    var res = model.Dungeon_Start(req);
 
     if (res == null) {
         return StatusCode(500);

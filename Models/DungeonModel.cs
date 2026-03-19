@@ -6,59 +6,66 @@ using sembastandalone.Utils;
 
 public class DungeonModel {
 
-public static DungeonAcquireAreaItemResponse? Dungeon_AcquireAreaItem(DungeonAcquireAreaItemRequest req) {
+public DungeonAcquireAreaItemResponse? Dungeon_AcquireAreaItem(DungeonAcquireAreaItemRequest req) {
     Console.WriteLine($"Dungeon_AcquireAreaItem: {req}");
     return DungeonAcquireAreaItemResponse.Parser.ParseJson(
-        SembaWrapper.Call("/dungeon/acquire_area_item", req.ToString())
+        sembaWrapper.Call("/dungeon/acquire_area_item", req.ToString())
     );
 }
 
 
-public static BattleSkipResponse? Dungeon_BattleSkip(DungeonBattleSkipRequest req) {
+public BattleSkipResponse? Dungeon_BattleSkip(DungeonBattleSkipRequest req) {
     Console.WriteLine($"Dungeon_BattleSkip: {req}");
     return BattleSkipResponse.Parser.ParseJson(
-        SembaWrapper.Call("/dungeon/battle_skip", req.ToString())
+        sembaWrapper.Call("/dungeon/battle_skip", req.ToString())
     );
 }
 
 
-public static BattleStartResponse? Dungeon_BattleStart(DungeonBattleStartRequest req) {
+public BattleStartResponse? Dungeon_BattleStart(DungeonBattleStartRequest req) {
     Console.WriteLine($"Dungeon_BattleStart: {req}");
     return BattleStartResponse.Parser.ParseJson(
-        SembaWrapper.Call("/dungeon/battle_start", req.ToString())
+        sembaWrapper.Call("/dungeon/battle_start", req.ToString())
     );
 }
 
 
-public static DungeonEntryResponse? Dungeon_Entry(DungeonEntryRequest req) {
+public DungeonEntryResponse? Dungeon_Entry(DungeonEntryRequest req) {
     Console.WriteLine($"Dungeon_Entry: {req}");
     return DungeonEntryResponse.Parser.ParseJson(
-        SembaWrapper.Call("/dungeon/entry", req.ToString())
+        sembaWrapper.Call("/dungeon/entry", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? Dungeon_Finish(DungeonFinishRequest req) {
+public ChangedResourcesResponse? Dungeon_Finish(DungeonFinishRequest req) {
     Console.WriteLine($"Dungeon_Finish: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/dungeon/finish", req.ToString())
+        sembaWrapper.Call("/dungeon/finish", req.ToString())
     );
 }
 
 
-public static DungeonResumeResponse? Dungeon_Resume(DungeonResumeRequest req) {
+public DungeonResumeResponse? Dungeon_Resume(DungeonResumeRequest req) {
     Console.WriteLine($"Dungeon_Resume: {req}");
     return DungeonResumeResponse.Parser.ParseJson(
-        SembaWrapper.Call("/dungeon/resume", req.ToString())
+        sembaWrapper.Call("/dungeon/resume", req.ToString())
     );
 }
 
 
-public static DungeonStartResponse? Dungeon_Start(DungeonStartRequest req) {
+public DungeonStartResponse? Dungeon_Start(DungeonStartRequest req) {
     Console.WriteLine($"Dungeon_Start: {req}");
     return DungeonStartResponse.Parser.ParseJson(
-        SembaWrapper.Call("/dungeon/start", req.ToString())
+        sembaWrapper.Call("/dungeon/start", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public DungeonModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

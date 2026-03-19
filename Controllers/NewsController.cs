@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class NewsController : Controller {
 
+private NewsModel model;
+
+public NewsController(ISembaWrapper wrapper) {
+    model = new NewsModel(wrapper);
+}
+
+
 [Route("/news/list")]
 public async Task<IActionResult> News_List() {
     var req = await RequestSerializer.Deserialize<NewsListRequest>(Request);
 
-    var res = NewsModel.News_List(req);
+    var res = model.News_List(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> News_List() {
 public IActionResult News_UserList() {
     // no request
 
-    var res = NewsModel.News_UserList();
+    var res = model.News_UserList();
 
     if (res == null) {
         return StatusCode(500);

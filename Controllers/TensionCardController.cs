@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class TensionCardController : Controller {
 
+private TensionCardModel model;
+
+public TensionCardController(ISembaWrapper wrapper) {
+    model = new TensionCardModel(wrapper);
+}
+
+
 [Route("/tension_card/disassemble")]
 public async Task<IActionResult> TensionCard_Disassemble() {
     var req = await RequestSerializer.Deserialize<TensionCardDisassembleRequest>(Request);
 
-    var res = TensionCardModel.TensionCard_Disassemble(req);
+    var res = model.TensionCard_Disassemble(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> TensionCard_Disassemble() {
 public async Task<IActionResult> TensionCard_Enhance() {
     var req = await RequestSerializer.Deserialize<TensionCardEnhanceRequest>(Request);
 
-    var res = TensionCardModel.TensionCard_Enhance(req);
+    var res = model.TensionCard_Enhance(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> TensionCard_Enhance() {
 public async Task<IActionResult> TensionCard_LevelLimitEnhance() {
     var req = await RequestSerializer.Deserialize<TensionCardLevelLimitEnhanceRequest>(Request);
 
-    var res = TensionCardModel.TensionCard_LevelLimitEnhance(req);
+    var res = model.TensionCard_LevelLimitEnhance(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> TensionCard_LevelLimitEnhance() {
 public async Task<IActionResult> TensionCard_LimitBreakEnhance() {
     var req = await RequestSerializer.Deserialize<TensionCardLimitBreakEnhanceRequest>(Request);
 
-    var res = TensionCardModel.TensionCard_LimitBreakEnhance(req);
+    var res = model.TensionCard_LimitBreakEnhance(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> TensionCard_LimitBreakEnhance() {
 public async Task<IActionResult> TensionCard_Lock() {
     var req = await RequestSerializer.Deserialize<TensionCardLockRequest>(Request);
 
-    var res = TensionCardModel.TensionCard_Lock(req);
+    var res = model.TensionCard_Lock(req);
 
     if (res == null) {
         return StatusCode(500);

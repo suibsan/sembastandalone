@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class DebugController : Controller {
 
+private DebugModel model;
+
+public DebugController(ISembaWrapper wrapper) {
+    model = new DebugModel(wrapper);
+}
+
+
 [Route("/debug/challenge_clear")]
 public async Task<IActionResult> Debug_ChallengeClear() {
     var req = await RequestSerializer.Deserialize<DebugChallengeClearRequest>(Request);
 
-    var res = DebugModel.Debug_ChallengeClear(req);
+    var res = model.Debug_ChallengeClear(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Debug_ChallengeClear() {
 public void Debug_ClientError() {
     // no request
 
-    DebugModel.Debug_ClientError();
+    model.Debug_ClientError();
 
     // no response
 }
@@ -37,7 +44,7 @@ public void Debug_ClientError() {
 public IActionResult Debug_JiraToken() {
     // no request
 
-    var res = DebugModel.Debug_JiraToken();
+    var res = model.Debug_JiraToken();
 
     if (res == null) {
         return StatusCode(500);
@@ -51,7 +58,7 @@ public IActionResult Debug_JiraToken() {
 public async Task Debug_MailSend() {
     var req = await RequestSerializer.Deserialize<DebugMailSendRequest>(Request);
 
-    DebugModel.Debug_MailSend(req);
+    model.Debug_MailSend(req);
 
     // no response
 }
@@ -61,7 +68,7 @@ public async Task Debug_MailSend() {
 public void Debug_ServerError() {
     // no request
 
-    DebugModel.Debug_ServerError();
+    model.Debug_ServerError();
 
     // no response
 }
@@ -71,7 +78,7 @@ public void Debug_ServerError() {
 public async Task<IActionResult> Debug_ShopPurchase() {
     var req = await RequestSerializer.Deserialize<DebugShopPurchaseRequest>(Request);
 
-    var res = DebugModel.Debug_ShopPurchase(req);
+    var res = model.Debug_ShopPurchase(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -85,7 +92,7 @@ public async Task<IActionResult> Debug_ShopPurchase() {
 public async Task Debug_UserBulkResource() {
     var req = await RequestSerializer.Deserialize<DebugUserBulkResourceRequest>(Request);
 
-    DebugModel.Debug_UserBulkResource(req);
+    model.Debug_UserBulkResource(req);
 
     // no response
 }
@@ -95,7 +102,7 @@ public async Task Debug_UserBulkResource() {
 public void Debug_UserError() {
     // no request
 
-    DebugModel.Debug_UserError();
+    model.Debug_UserError();
 
     // no response
 }
@@ -105,7 +112,7 @@ public void Debug_UserError() {
 public async Task Debug_XbPvpSpecifyEnemy() {
     var req = await RequestSerializer.Deserialize<DebugXbPvpSpecifyEnemyRequest>(Request);
 
-    DebugModel.Debug_XbPvpSpecifyEnemy(req);
+    model.Debug_XbPvpSpecifyEnemy(req);
 
     // no response
 }

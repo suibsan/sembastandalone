@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class AuthController : Controller {
 
+private AuthModel model;
+
+public AuthController(ISembaWrapper wrapper) {
+    model = new AuthModel(wrapper);
+}
+
+
 [Route("/auth/nonce")]
 public IActionResult Auth_Nonce() {
     // no request
 
-    var res = AuthModel.Auth_Nonce();
+    var res = model.Auth_Nonce();
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public IActionResult Auth_Nonce() {
 public async Task<IActionResult> Auth_SignIn() {
     var req = await RequestSerializer.Deserialize<AuthSignInRequest>(Request);
 
-    var res = AuthModel.Auth_SignIn(req);
+    var res = model.Auth_SignIn(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> Auth_SignIn() {
 public async Task<IActionResult> Auth_SignUp() {
     var req = await RequestSerializer.Deserialize<AuthSignUpRequest>(Request);
 
-    var res = AuthModel.Auth_SignUp(req);
+    var res = model.Auth_SignUp(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -55,7 +62,7 @@ public async Task<IActionResult> Auth_SignUp() {
 public async Task<IActionResult> Auth_SignUpApple() {
     var req = await RequestSerializer.Deserialize<AuthSignUpAppleRequest>(Request);
 
-    var res = AuthModel.Auth_SignUpApple(req);
+    var res = model.Auth_SignUpApple(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -69,7 +76,7 @@ public async Task<IActionResult> Auth_SignUpApple() {
 public async Task<IActionResult> Auth_SignUpGoogle() {
     var req = await RequestSerializer.Deserialize<AuthSignUpGoogleRequest>(Request);
 
-    var res = AuthModel.Auth_SignUpGoogle(req);
+    var res = model.Auth_SignUpGoogle(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -83,7 +90,7 @@ public async Task<IActionResult> Auth_SignUpGoogle() {
 public async Task<IActionResult> Auth_SignUpPasscode() {
     var req = await RequestSerializer.Deserialize<AuthSignUpPasscodeRequest>(Request);
 
-    var res = AuthModel.Auth_SignUpPasscode(req);
+    var res = model.Auth_SignUpPasscode(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -97,7 +104,7 @@ public async Task<IActionResult> Auth_SignUpPasscode() {
 public async Task<IActionResult> Auth_SteamUser() {
     var req = await RequestSerializer.Deserialize<AuthSteamUserRequest>(Request);
 
-    var res = AuthModel.Auth_SteamUser(req);
+    var res = model.Auth_SteamUser(req);
 
     if (res == null) {
         return StatusCode(500);

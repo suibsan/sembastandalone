@@ -6,11 +6,18 @@ using sembastandalone.Utils;
 
 public class CityModel {
 
-public static ChangedResourcesResponse? City_ReleaseGearShop(CityReleaseGearShopRequest req) {
+public ChangedResourcesResponse? City_ReleaseGearShop(CityReleaseGearShopRequest req) {
     Console.WriteLine($"City_ReleaseGearShop: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/city/release_gear_shop", req.ToString())
+        sembaWrapper.Call("/city/release_gear_shop", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public CityModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

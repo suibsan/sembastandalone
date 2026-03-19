@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class RuledBattleController : Controller {
 
+private RuledBattleModel model;
+
+public RuledBattleController(ISembaWrapper wrapper) {
+    model = new RuledBattleModel(wrapper);
+}
+
+
 [Route("/ruled_battle/start")]
 public async Task<IActionResult> RuledBattle_Start() {
     var req = await RequestSerializer.Deserialize<RuledBattleStartRequest>(Request);
 
-    var res = RuledBattleModel.RuledBattle_Start(req);
+    var res = model.RuledBattle_Start(req);
 
     if (res == null) {
         return StatusCode(500);

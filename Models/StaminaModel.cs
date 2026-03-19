@@ -6,19 +6,26 @@ using sembastandalone.Utils;
 
 public class StaminaModel {
 
-public static ChangedResourcesResponse? Stamina_Purchase(StaminaPurchaseRequest req) {
+public ChangedResourcesResponse? Stamina_Purchase(StaminaPurchaseRequest req) {
     Console.WriteLine($"Stamina_Purchase: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/stamina/purchase", req.ToString())
+        sembaWrapper.Call("/stamina/purchase", req.ToString())
     );
 }
 
 
-public static ChangedResourcesResponse? Stamina_UseItem(StaminaUseItemRequest req) {
+public ChangedResourcesResponse? Stamina_UseItem(StaminaUseItemRequest req) {
     Console.WriteLine($"Stamina_UseItem: {req}");
     return ChangedResourcesResponse.Parser.ParseJson(
-        SembaWrapper.Call("/stamina/use_item", req.ToString())
+        sembaWrapper.Call("/stamina/use_item", req.ToString())
     );
+}
+
+
+private ISembaWrapper sembaWrapper;
+
+public StaminaModel(ISembaWrapper wrapper) {
+    sembaWrapper = wrapper;
 }
 
 }

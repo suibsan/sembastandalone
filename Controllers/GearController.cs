@@ -9,11 +9,18 @@ namespace sembastandalone.Controllers;
 
 public class GearController : Controller {
 
+private GearModel model;
+
+public GearController(ISembaWrapper wrapper) {
+    model = new GearModel(wrapper);
+}
+
+
 [Route("/gear/compress")]
 public async Task<IActionResult> Gear_Compress() {
     var req = await RequestSerializer.Deserialize<GearCompressRequest>(Request);
 
-    var res = GearModel.Gear_Compress(req);
+    var res = model.Gear_Compress(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -27,7 +34,7 @@ public async Task<IActionResult> Gear_Compress() {
 public async Task<IActionResult> Gear_Lock() {
     var req = await RequestSerializer.Deserialize<GearLockRequest>(Request);
 
-    var res = GearModel.Gear_Lock(req);
+    var res = model.Gear_Lock(req);
 
     if (res == null) {
         return StatusCode(500);
@@ -41,7 +48,7 @@ public async Task<IActionResult> Gear_Lock() {
 public async Task<IActionResult> Gear_Unlock() {
     var req = await RequestSerializer.Deserialize<GearUnlockRequest>(Request);
 
-    var res = GearModel.Gear_Unlock(req);
+    var res = model.Gear_Unlock(req);
 
     if (res == null) {
         return StatusCode(500);

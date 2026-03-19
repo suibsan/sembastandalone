@@ -7,19 +7,19 @@ public class Semba {
     [DllImport("libsemba")]
     public static extern void NimMain();
 
-    // extern char *SembaCall(const char *uri, const char *request);
+    // extern struct SembaExContext *SembaExInit(const char *dbPath, int32_t gameVersion, int32_t *status);
     [DllImport("libsemba")]
-    public static extern IntPtr SembaCall(IntPtr uri, IntPtr request);
+    public static extern IntPtr SembaExInit(IntPtr dbPath, int gameVersion, IntPtr status);
 
-    // extern char *SembaCallDemo(const char *uri, const char *request);
+    // extern char *SembaExCall(struct SembaExContext *ctx, const char *path, const char *req, int32_t *status);
     [DllImport("libsemba")]
-    public static extern IntPtr SembaCallDemo(IntPtr uri, IntPtr request);
+    public static extern IntPtr SembaExCall(IntPtr ctx, IntPtr path, IntPtr req, IntPtr status);
 
-    // extern void SembaInitOfflineDb(const char *path);
+    // extern void SembaExFreeResponse(char *response);
     [DllImport("libsemba")]
-    public static extern void SembaInitOfflineDb(IntPtr path);
+    public static extern void SembaExFreeResponse(IntPtr response);
 
-    // extern void SembaSetRemoteUrl(const char *url);
+    // extern void SembaExDeinit(struct SembaExContext *ctx);
     [DllImport("libsemba")]
-    public static extern void SembaSetRemoteUrl(IntPtr url);
+    public static extern void SembaExDeinit(IntPtr ctx);
 }

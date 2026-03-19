@@ -6,7 +6,7 @@ using Google.Protobuf;
 using System.Reflection;
 
 public class RequestSerializer {
-    private static async Task<byte[]> GetBodyAsync(HttpRequest req) {
+    public static async Task<byte[]> GetBodyAsync(HttpRequest req) {
         using (var ms = new MemoryStream()) {
             await req.Body.CopyToAsync(ms);
             return ms.ToArray();

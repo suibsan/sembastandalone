@@ -1,11 +1,10 @@
 using sembastandalone.Utils;
 
-SembaWrapper.Init("semba.db");
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ISembaWrapper, SembaWrapper>();
 
 var app = builder.Build();
 

@@ -12,7 +12,6 @@ def run(cmd):
 def main():
     parser = ArgumentParser()
 
-    parser.add_argument("--branch", default="master")
     args = parser.parse_args()
 
     semba_path = pathlib.Path("semba")
@@ -20,10 +19,7 @@ def main():
 
     if not semba_path.exists():
         run(["git", "clone", "git@github.com:/24tribe/semba.git", "semba"])
-    else:
-        run(["git", "-C", str(semba_path), "fetch", "origin", args.branch])
-        run(["git", "-C", str(semba_path), "reset", "--hard", f"origin/{args.branch}"])
-
+    
     semba_build_path = pathlib.Path("bin/semba_build")
 
     if not semba_build_path.exists():

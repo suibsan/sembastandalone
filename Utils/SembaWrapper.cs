@@ -2,6 +2,7 @@ namespace sembastandalone.Utils;
 
 using System.Runtime.InteropServices;
 using Google.Protobuf;
+using System.Threading.Tasks;
 
 public enum SembaStatus {
     StatusOk = 0,
@@ -59,6 +60,7 @@ public interface ISembaWrapper {
 
 public class SembaWrapper : ISembaWrapper {
     private IntPtr ctx;
+    private readonly object sembaCallLock = new();
 
     static SembaWrapper() {
         Semba.NimMain();
@@ -90,7 +92,12 @@ public class SembaWrapper : ISembaWrapper {
 
         var statusPtr = Marshal.AllocCoTaskMem(sizeof(int));
 
-        var resUtf8 = Semba.SembaExCall(ctx, pathUtf8, reqJsonUtf8, statusPtr);
+        IntPtr resUtf8;
+
+        lock (sembaCallLock) {
+            resUtf8 = Semba.SembaExCall(ctx, pathUtf8, reqJsonUtf8, statusPtr);
+        }
+
         var res = Marshal.PtrToStringUTF8(resUtf8);
 
         Semba.SembaExFreeResponse(resUtf8);

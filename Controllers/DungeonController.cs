@@ -45,6 +45,7 @@ public async Task<IActionResult> Dungeon_BattleSkip() {
 
 
 [Route("/dungeon/battle_start")]
+[Route("/dungeon/battle/start")]
 public async Task<IActionResult> Dungeon_BattleStart() {
     var req = await RequestSerializer.Deserialize<DungeonBattleStartRequest>(Request);
 

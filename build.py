@@ -12,6 +12,8 @@ def run(cmd):
 def main():
     parser = ArgumentParser()
 
+    parser.add_argument("--dont-override-db", action="store_true")
+
     args = parser.parse_args()
 
     semba_path = pathlib.Path("semba")
@@ -29,7 +31,8 @@ def main():
 
     run(["dotnet", "publish"])
 
-    run(["cp", str(semba_build_path/"semba.db"), str(dotnet_publish_path)])
+    if not args.dont_override_db:
+        run(["cp", str(semba_build_path/"semba.db"), str(dotnet_publish_path)])
 
     run(["cp", str(semba_build_path/SEMBA_LIB_FILENAME), str(dotnet_publish_path)])
 

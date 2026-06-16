@@ -13,6 +13,7 @@ def main():
     parser = ArgumentParser()
 
     parser.add_argument("--dont-override-db", action="store_true")
+    parser.add_argument("--skip-dotnet-publish", action="store_true")
 
     args = parser.parse_args()
 
@@ -29,7 +30,8 @@ def main():
 
     run(["meson", "compile", "-C", str(semba_build_path)])
 
-    run(["dotnet", "publish"])
+    if not args.skip_dotnet_publish:
+        run(["dotnet", "publish"])
 
     if not args.dont_override_db:
         run(["cp", str(semba_build_path/"semba.db"), str(dotnet_publish_path)])

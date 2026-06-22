@@ -4,6 +4,7 @@ import subprocess
 import platform
 
 SEMBA_LIB_FILENAME = "libsemba.dll" if platform.system() == "Windows" else "libsemba.so"
+SEMBA_REPO = "https://github.com/24tribe/semba.git"
 
 def run(cmd):
     print(cmd)
@@ -21,7 +22,7 @@ def main():
     dotnet_publish_path = pathlib.Path("bin/Release/net9.0/publish")
 
     if not semba_path.exists():
-        run(["git", "clone", "git@github.com:/24tribe/semba.git", "semba"])
+        run(["git", "clone", SEMBA_REPO, "semba"])
     
     semba_build_path = pathlib.Path("bin/semba_build")
 

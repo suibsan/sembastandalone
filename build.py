@@ -15,6 +15,7 @@ def main():
 
     parser.add_argument("--dont-override-db", action="store_true")
     parser.add_argument("--skip-dotnet-publish", action="store_true")
+    parser.add_argument("--semba-version", default="master")
 
     args = parser.parse_args()
 
@@ -22,7 +23,7 @@ def main():
     dotnet_publish_path = pathlib.Path("bin/Release/net9.0/publish")
 
     if not semba_path.exists():
-        run(["git", "clone", SEMBA_REPO, "semba"])
+        run(["git", "clone", SEMBA_REPO, "semba", "-b", args.semba_version])
     
     semba_build_path = pathlib.Path("bin/semba_build")
 

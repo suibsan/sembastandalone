@@ -28,7 +28,11 @@ def main():
     semba_build_path = pathlib.Path("bin/semba_build")
 
     if not semba_build_path.exists():
-        run(["meson", "setup", "-Ddefault_library=shared", str(semba_build_path), str(semba_path)])
+        run([
+            "meson", "setup",
+            "-Ddefault_library=shared", "-Dthread_support=true",
+            str(semba_build_path), str(semba_path)
+        ])
 
     run(["meson", "compile", "-C", str(semba_build_path)])
 

@@ -1,0 +1,37 @@
+name: testpr
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Setup Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13'
+
+    - name: Setup Nim
+      uses: jiro4989/setup-nim-action@v2
+      with:
+        nim-version: '2.2.10'
+
+    - name: Get Meson
+      run: pip install meson
+
+    - name: Build everything
+      run: python build.py --semba-version v0.3.0
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v7
+      with:
+        name: sembastandalone-${{ github.sha }}-x64
+        path: bin/Release/net9.0/publish
+        if-no-files-found: error

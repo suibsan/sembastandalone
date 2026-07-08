@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Nodes;
 
 using sembastandalone.Utils;
 using sembastandalone.Models;
@@ -89,6 +90,14 @@ public IActionResult User_LinksList() {
 [Route("/user/log_in")]
 public IActionResult User_LogIn() {
     // no request
+
+    var jsonRes = UserModel.requiresAssetsUpdates(Request);
+
+    if (jsonRes != null) {
+        var result = Json(jsonRes);
+        result.StatusCode = 409;
+        return result;
+    }
 
     var res = model.User_LogIn();
 

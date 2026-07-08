@@ -1,6 +1,10 @@
 
 namespace sembastandalone.Models;
 
+using Microsoft.AspNetCore.Mvc; 
+using Microsoft.Extensions.Primitives;
+using System.Text.Json.Nodes;
+
 using Neon.Model.Api.Rpc;
 using sembastandalone.Utils;
 
@@ -99,5 +103,27 @@ private ISembaWrapper sembaWrapper;
 public UserModel(ISembaWrapper wrapper) {
     sembaWrapper = wrapper;
 }
+
+public static JsonNode? requiresAssetsUpdates(HttpRequest req) {
+    StringValues platform;
+    StringValues masterdataVersion;
+    StringValues assetVersion;
+    var hasPlatform = req.Headers.TryGetValue("X-platform", out platform);
+    var hasAssetVersion = req.Headers.TryGetValue("X-asset-version", out assetVersion);
+    var hasMasterdataVersion = req.Headers.TryGetValue("X-master-data-version", out masterdataVersion);
+
+    if (
+        hasPlatform && platform[0] == "android"
+        && hasAssetVersion && assetVersion[0] == "dummy"
+        && hasMasterdataVersion && masterdataVersion[0] == "1754991108_eZMAZkXEu2j4eKRs"
+    ) {
+        return JsonNode.Parse(
+            "{\"asset_version\": \"1751522506_6r3dz52c5q_2zJrU\", \"code\": \"requires_assets_updates\"}"
+        ); 
+    }
+
+    return null;
+}   
+
 
 }

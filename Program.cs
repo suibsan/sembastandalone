@@ -44,6 +44,11 @@ app.MapControllers();
 app.Use(async (context, next) =>
 {
     Console.WriteLine($"Path: {context.Request.Path}");
+
+    context.Response.OnStarting(() => {
+        context.Response.Headers["X-Server-Timestamp"] = "0";
+        return Task.CompletedTask;
+    });
     
     await next(context);
 });

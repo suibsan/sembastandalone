@@ -12,28 +12,31 @@ battleStartReqHex = "48FB903D3FED2BD255CFBB49247BE1CFBFF15723DEF1EEDBC01A0009DD9
 battleFinishReqHex = "BA5B341A07BC2EAB5FBDF13CFF2593BD07C980604EB51E7E02D8D0BD1216397692342F02656B952228524C8ACE3E67A3E8D9AA09776803EEE3953FB264763357AFE7378060A3FB8A17C07619E407C933C27A5E32EF5DDF555B6469B73EBD0D6BA4499311C1F17DE9206E1EF3E20A73367F"
 
 
-def post(base_url, path, data):
-    res = requests.post(f"{base_url}{path}", data=bytes.fromhex(data))
+def post(base_url, path, data, headers={}):
+    res = requests.post(f"{base_url}{path}", data=bytes.fromhex(data), headers=headers)
     print(base_url, path, res.status_code) 
-    return res.content.hex()
+    return res
 
-def post_args(args):
-    post(*args)
 
 def battle_start(base_url):
-    post(base_url, "/battle/start", battleStartReqHex)
+    return post(base_url, "/battle/start", battleStartReqHex)
+
 
 def battle_finish(base_url):
-    post(base_url, "/battle/finish", battleFinishReqHex)
+    return post(base_url, "/battle/finish", battleFinishReqHex)
+
 
 def reset_db(base_url):
-    post(base_url, "/semba/reset_db", "")
+    return post(base_url, "/semba/reset_db", "")
 
-def main():
+
+def parse_args():
     parser = ArgumentParser()
     parser.add_argument("base_url")
-    args = parser.parse_args()
+    return parser.parse_args()
 
+
+def main():
     # reset_db(args.base_url)
     battle_start(args.base_url)
     t = 60
